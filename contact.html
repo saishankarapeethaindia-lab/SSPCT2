@@ -24,6 +24,7 @@
             font-family: 'Open Sans', sans-serif;
             color: #555;
             background-color: #f4f6f9;
+            overflow-x: hidden;
         }
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
@@ -31,21 +32,38 @@
             font-weight: 700;
         }
 
-        /* --- 2. BREADCRUMB (Matches Others) --- */
+        /* --- 2. BREADCRUMB --- */
         .breadcrumb-area {
             background: linear-gradient(135deg, #0a2351 0%, #1a3a6e 100%);
-            padding: 80px 0;
+            padding: 120px 0;
             text-align: center;
             color: #ffffff;
             border-bottom: 5px solid #d4a017;
         }
-        .breadcrumb-area h1 { color: #d4a017; margin-bottom: 10px; }
-        .breadcrumb li a { color: #fff; }
+        .breadcrumb-area h1 { 
+            color: #d4a017; 
+            margin-bottom: 10px; 
+            font-size: 3.5em;
+        }
+        .breadcrumb { background: transparent; padding: 0; }
+        .breadcrumb li a { color: #fff; text-decoration: none; }
         .breadcrumb .active { color: #d4a017; }
 
         /* --- 3. MAGIC CONTACT CARDS --- */
         .contact-area { padding: 80px 0; }
         
+        /* The Link Wrapper (Makes the whole card clickable) */
+        .card-link-wrapper {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+        }
+        .card-link-wrapper:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .contact-card {
             background: #fff;
             padding: 40px 30px;
@@ -59,7 +77,7 @@
         }
 
         /* Hover Effect: Lift and Gold Border */
-        .contact-card:hover {
+        .card-link-wrapper:hover .contact-card {
             transform: translateY(-10px);
             border-top: 4px solid #d4a017;
             box-shadow: 0 20px 40px rgba(10, 35, 81, 0.15);
@@ -77,13 +95,15 @@
             box-shadow: 0 5px 15px rgba(10, 35, 81, 0.3);
         }
         
-        .contact-card:hover .icon-box {
+        .card-link-wrapper:hover .icon-box {
             background: #d4a017;
             color: #fff;
-            transform: rotateY(360deg); /* Fun spin effect */
+            transform: rotateY(360deg); /* Magic Spin Effect */
         }
 
-        .contact-card h4 { font-size: 22px; margin-bottom: 10px; }
+        .contact-card h4 { font-size: 22px; margin-bottom: 10px; transition: color 0.3s; }
+        .card-link-wrapper:hover h4 { color: #d4a017; }
+        
         .contact-card span { font-size: 15px; color: #777; line-height: 1.6; display: block;}
 
         /* --- 4. CONTACT FORM --- */
@@ -92,6 +112,7 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            height: 100%;
         }
         .form-control {
             height: 50px;
@@ -114,6 +135,7 @@
             font-weight: 600;
             text-transform: uppercase;
             transition: 0.3s;
+            width: 100%;
         }
         .btn-theme:hover {
             background: #d4a017;
@@ -127,6 +149,8 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             border-radius: 5px;
             overflow: hidden;
+            height: 100%;
+            min-height: 450px;
         }
 
         /* --- 6. FOOTER --- */
@@ -135,7 +159,16 @@
             color: #ccc;
             border-top: 5px solid #d4a017;
             padding: 30px 0;
-            margin-top: 50px;
+        }
+
+        /* --- 7. MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .breadcrumb-area { padding: 80px 0; }
+            .breadcrumb-area h1 { font-size: 2.2em; }
+            .contact-card { margin-bottom: 20px; padding: 30px 15px; }
+            .maps-area { margin-top: 30px; }
+            .google-maps { min-height: 300px; margin-top: 30px; }
+            .btn-theme { margin-top: 10px; }
         }
     </style>
 </head>
@@ -149,7 +182,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <h1>Contact Us</h1>
-                    <ul class="breadcrumb" style="background: transparent;">
+                    <ul class="breadcrumb">
                         <li><a href="index.html">Home</a></li>
                         <li class="active">Contact</li>
                     </ul>
@@ -169,49 +202,56 @@
             </div>
 
             <div class="row">
+                
                 <div class="col-md-4">
-                    <div class="contact-card">
-                        <div class="icon-box">
-                            <i class="fas fa-map-marker-alt"></i>
+                    <a href="https://www.google.com/maps?q=Sai+Shankara+Peetha,+R+T+Nagar,+Bangalore" target="_blank" class="card-link-wrapper">
+                        <div class="contact-card">
+                            <div class="icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4>Visit Us</h4>
+                            <span>
+                                <strong>Sai Shankara Peetha</strong><br>
+                                No. 281, Hari Om,<br>
+                                R T Nagar, Bangalore - 560032
+                            </span>
                         </div>
-                        <h4>Visit Us</h4>
-                        <span>
-                            <strong>Sai Shankara Peetha</strong><br>
-                            No. 281, Hari Om,<br>
-                            R T Nagar, Bangalore - 560032
-                        </span>
-                    </div>
+                    </a>
                 </div>
                 
                 <div class="col-md-4">
-                    <div class="contact-card">
-                        <div class="icon-box">
-                            <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+917022351259" class="card-link-wrapper">
+                        <div class="contact-card">
+                            <div class="icon-box">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h4>Call Us</h4>
+                            <span>
+                                <strong>Mr. Sai Prasad Manikoth</strong><br>
+                                +91 70223 51259<br>
+                                (Tap to Call)
+                            </span>
                         </div>
-                        <h4>Call Us</h4>
-                        <span>
-                            <strong>Mr. Sai Prasad Manikoth</strong><br>
-                            +91 +91 70223 51259<br>
-                        
-                        </span>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="contact-card">
-                        <div class="icon-box">
-                            <i class="fas fa-envelope-open-text"></i>
+                    <a href="mailto:saishankarapeetha.india@gmail.com" class="card-link-wrapper">
+                        <div class="contact-card">
+                            <div class="icon-box">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                            <h4>Email Us</h4>
+                            <span>
+                                For general queries:<br>
+                                <strong>saishankarapeetha.india@gmail.com</strong>
+                            </span>
                         </div>
-                        <h4>Email Us</h4>
-                        <span>
-                            For general queries:<br>
-                            <strong>saishankarapeetha.india@gmail.com</strong>
-                        </span>
-                    </div>
+                    </a>
                 </div>
             </div>
 
-            <div class="row maps-area" style="margin-top: 60px;">
+            <div class="row maps-area">
                 
                 <div class="col-md-6">
                     <div class="form-box">
@@ -250,8 +290,9 @@
 
                 <div class="col-md-6">
                     <div class="google-maps">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15548.9277054819!2d77.5874958490525!3d13.020897496782215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17bac2a140d9%3A0x1fe7e4cfffb7e346!2sRT%20Nagar%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1768348476975!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"> 
-                        width="100%" height="425" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.279641772658!2d77.59124401482252!3d13.017849990825603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17a77e2311f3%3A0x77c25c6a15f0134e!2sR.%20T.%20Nagar%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1629883556000!5m2!1sen!2sin" 
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
 
