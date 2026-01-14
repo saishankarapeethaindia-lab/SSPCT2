@@ -17,7 +17,10 @@
     <link href="assets/css/responsive.css" rel="stylesheet">
 
     <style>
-        /* PAGE BANNER (Matches Projects Page) */
+        /* --- GENERAL STYLES --- */
+        body { font-family: 'Open Sans', sans-serif; }
+        
+        /* PAGE BANNER */
         .breadcrumb-area {
             background-color: #0a2351;
             padding: 120px 0;
@@ -25,12 +28,22 @@
             color: #ffffff;
         }
         .breadcrumb-area h1 {
+            font-family: 'Poppins', sans-serif;
             font-size: 3.5em;
             font-weight: 700;
             color: #d1a000;
             letter-spacing: 2px;
             text-transform: uppercase;
+            margin-bottom: 10px;
         }
+        .breadcrumb { background: transparent; padding: 0; }
+        .breadcrumb li a { color: #fff; }
+        .breadcrumb li.active { color: #d1a000; }
+
+        /* SECTION HEADING */
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { color: #0a2351; font-weight: 700; margin-bottom: 15px; }
+        .section-header p { font-size: 1.1em; color: #666; max-width: 700px; margin: 0 auto; }
 
         /* TRUSTEE CARD DESIGN */
         .trustee-item {
@@ -43,25 +56,25 @@
             border-bottom: 4px solid transparent;
             text-align: center;
             padding-bottom: 20px;
+            height: 100%; /* Ensures equal height in flex containers if used */
         }
 
-        /* Hover Effect: Lift and Gold Border */
+        /* Hover Effect */
         .trustee-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(10, 35, 81, 0.15);
             border-bottom: 4px solid #d1a000;
         }
 
-        /* The Round Icon Placeholder */
+        /* Icon Placeholder */
         .trustee-thumb {
             background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
             padding: 40px 0;
-            position: relative;
             margin-bottom: 20px;
         }
         .trustee-thumb i {
             font-size: 5em;
-            color: #ccc; /* Grey for privacy */
+            color: #ccc;
             background: white;
             width: 120px;
             height: 120px;
@@ -71,9 +84,7 @@
             transition: all 0.4s ease;
         }
         
-        /* Icon lights up on hover */
         .trustee-item:hover .trustee-thumb i {
-            color: #0a2351;
             background: #d1a000;
             color: white;
         }
@@ -87,7 +98,7 @@
         }
         .trustee-info span {
             display: block;
-            color: #d1a000; /* Gold Role Title */
+            color: #d1a000;
             font-weight: 600;
             font-size: 0.9em;
             margin-bottom: 15px;
@@ -97,16 +108,37 @@
             padding: 0 20px;
             color: #666;
             font-size: 0.9em;
+            line-height: 1.6;
         }
 
-        /* Generic Social Icons (Optional) */
-        .social-placeholder {
-            margin-top: 15px;
+        .social-placeholder { margin-top: 15px; }
+        .social-placeholder i { color: #bbb; margin: 0 5px; cursor: default; }
+
+        /* --- VOLUNTEER CARD (Special Style) --- */
+        .trustee-item.volunteer {
+            background: #fff8e1;
+            border: 2px dashed #d1a000;
         }
-        .social-placeholder i {
-            color: #bbb;
-            margin: 0 5px;
-            cursor: default;
+        .trustee-item.volunteer .trustee-thumb {
+            background: transparent;
+        }
+        .trustee-item.volunteer .trustee-thumb i {
+            color: #d1a000;
+        }
+        .trustee-item.volunteer:hover .trustee-thumb i {
+            background: #fff; 
+            color: #d1a000; /* Reverse hover for this card */
+        }
+
+        /* --- MOBILE RESPONSIVE RULES --- */
+        @media (max-width: 768px) {
+            .breadcrumb-area { padding: 80px 0; }
+            .breadcrumb-area h1 { font-size: 2.2em; }
+            
+            .section-header h2 { font-size: 1.8em; }
+            .section-header p { font-size: 1em; padding: 0 15px; }
+            
+            .trustee-item { margin-bottom: 40px; }
         }
     </style>
 </head>
@@ -129,13 +161,13 @@
         </div>
     </div>
 
-    <div class="trustees-area default-padding">
+    <div class="trustees-area default-padding" style="padding-top: 80px; padding-bottom: 80px;">
         <div class="container">
             
             <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <h2 style="color: #0a2351; font-weight: 700;">Our Guiding Light</h2>
-                    <p class="lead" style="margin-bottom: 50px;">
+                <div class="col-md-8 col-md-offset-2 section-header">
+                    <h2>Our Guiding Light</h2>
+                    <p>
                         Our trust is governed by a dedicated board of individuals committed to social welfare, transparency, and the spiritual upliftment of society.
                     </p>
                 </div>
@@ -151,9 +183,7 @@
                             <h4>Managing Trustee</h4>
                             <span>Founder & Head</span>
                             <p>Leading the vision of the trust with dedication to service and spiritual values.</p>
-                            <div class="social-placeholder">
-                                <i class="fas fa-envelope"></i>
-                            </div>
+                            <div class="social-placeholder"><i class="fas fa-envelope"></i></div>
                         </div>
                     </div>
                 </div>
@@ -167,9 +197,7 @@
                             <h4>Board Member</h4>
                             <span>Trustee</span>
                             <p>Contributing expertise in social welfare and community development.</p>
-                            <div class="social-placeholder">
-                                <i class="fas fa-envelope"></i>
-                            </div>
+                            <div class="social-placeholder"><i class="fas fa-envelope"></i></div>
                         </div>
                     </div>
                 </div>
@@ -183,9 +211,7 @@
                             <h4>Board Member</h4>
                             <span>Trustee</span>
                             <p>Overseeing administrative functions and ensuring transparency in operations.</p>
-                            <div class="social-placeholder">
-                                <i class="fas fa-envelope"></i>
-                            </div>
+                            <div class="social-placeholder"><i class="fas fa-envelope"></i></div>
                         </div>
                     </div>
                 </div>
@@ -199,9 +225,7 @@
                             <h4>Board Member</h4>
                             <span>Trustee</span>
                             <p>Dedicated to the execution of charitable projects and donor relations.</p>
-                            <div class="social-placeholder">
-                                <i class="fas fa-envelope"></i>
-                            </div>
+                            <div class="social-placeholder"><i class="fas fa-envelope"></i></div>
                         </div>
                     </div>
                 </div>
@@ -215,17 +239,15 @@
                             <h4>Board Member</h4>
                             <span>Trustee</span>
                             <p>Focusing on healthcare initiatives and support for the elderly.</p>
-                            <div class="social-placeholder">
-                                <i class="fas fa-envelope"></i>
-                            </div>
+                            <div class="social-placeholder"><i class="fas fa-envelope"></i></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-sm-6">
-                    <div class="trustee-item" style="background: #fff8e1; border: 2px dashed #d1a000;">
-                        <div class="trustee-thumb" style="background: transparent;">
-                            <i class="fas fa-hands-helping" style="color: #d1a000;"></i>
+                    <div class="trustee-item volunteer">
+                        <div class="trustee-thumb">
+                            <i class="fas fa-hands-helping"></i>
                         </div>
                         <div class="trustee-info">
                             <h4>Join Our Mission</h4>
@@ -236,7 +258,8 @@
                     </div>
                 </div>
 
-            </div> </div>
+            </div> 
+        </div>
     </div>
 
     <footer class="bg-dark text-light">
@@ -250,12 +273,12 @@
             </div>
         </div>
     </footer>
-        <script src="main.js"></script>
 
     <script src="assets/js/jquery-1.12.4.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootsnav.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="main.js"></script>
 
 </body>
 </html>
