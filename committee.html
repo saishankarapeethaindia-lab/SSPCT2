@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Board of Trustees - SSPCT</title>
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="assets/css/bootsnav.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+
+    <style>
+        /* PAGE BANNER (Matches Projects Page) */
+        .breadcrumb-area {
+            background-color: #0a2351;
+            padding: 120px 0;
+            text-align: center;
+            color: #ffffff;
+        }
+        .breadcrumb-area h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #d1a000;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* TRUSTEE CARD DESIGN */
+        .trustee-item {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            border-bottom: 4px solid transparent;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        /* Hover Effect: Lift and Gold Border */
+        .trustee-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(10, 35, 81, 0.15);
+            border-bottom: 4px solid #d1a000;
+        }
+
+        /* The Round Icon Placeholder */
+        .trustee-thumb {
+            background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+            padding: 40px 0;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .trustee-thumb i {
+            font-size: 5em;
+            color: #ccc; /* Grey for privacy */
+            background: white;
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        
+        /* Icon lights up on hover */
+        .trustee-item:hover .trustee-thumb i {
+            color: #0a2351;
+            background: #d1a000;
+            color: white;
+        }
+
+        /* Text Styling */
+        .trustee-info h4 {
+            color: #0a2351;
+            font-weight: 700;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+        .trustee-info span {
+            display: block;
+            color: #d1a000; /* Gold Role Title */
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .trustee-info p {
+            padding: 0 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Generic Social Icons (Optional) */
+        .social-placeholder {
+            margin-top: 15px;
+        }
+        .social-placeholder i {
+            color: #bbb;
+            margin: 0 5px;
+            cursor: default;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="home">
+        <nav class="navbar navbar-default navbar-sticky bootsnav">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/logo.png" class="logo" alt="Logo">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li class="active"><a href="committee.html">Trustees</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="galleryphotos.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Board of Trustees</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Trustees</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="trustees-area default-padding">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <h2 style="color: #0a2351; font-weight: 700;">Our Guiding Light</h2>
+                    <p class="lead" style="margin-bottom: 50px;">
+                        Our trust is governed by a dedicated board of individuals committed to social welfare, transparency, and the spiritual upliftment of society.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="trustee-item">
+                        <div class="trustee-thumb">
+                            <i class="fas fa-user-tie"></i> </div>
+                        <div class="trustee-info">
+                            <h4>Managing Trustee</h4>
+                            <span>Founder & Head</span>
+                            <p>Leading the vision of the trust with dedication to service and spiritual values.</p>
+                            <div class="social-placeholder">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="trustee-item">
+                        <div class="trustee-thumb">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="trustee-info">
+                            <h4>Board Member</h4>
+                            <span>Trustee</span>
+                            <p>Contributing expertise in social welfare and community development.</p>
+                            <div class="social-placeholder">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="trustee-item">
+                        <div class="trustee-thumb">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="trustee-info">
+                            <h4>Board Member</h4>
+                            <span>Trustee</span>
+                            <p>Overseeing administrative functions and ensuring transparency in operations.</p>
+                            <div class="social-placeholder">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-sm-6">
+                    <div class="trustee-item">
+                        <div class="trustee-thumb">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="trustee-info">
+                            <h4>Board Member</h4>
+                            <span>Trustee</span>
+                            <p>Dedicated to the execution of charitable projects and donor relations.</p>
+                            <div class="social-placeholder">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="trustee-item">
+                        <div class="trustee-thumb">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="trustee-info">
+                            <h4>Board Member</h4>
+                            <span>Trustee</span>
+                            <p>Focusing on healthcare initiatives and support for the elderly.</p>
+                            <div class="social-placeholder">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="trustee-item" style="background: #fff8e1; border: 2px dashed #d1a000;">
+                        <div class="trustee-thumb" style="background: transparent;">
+                            <i class="fas fa-hands-helping" style="color: #d1a000;"></i>
+                        </div>
+                        <div class="trustee-info">
+                            <h4>Join Our Mission</h4>
+                            <span>Volunteer With Us</span>
+                            <p>We welcome dedicated individuals to join our cause and serve humanity.</p>
+                            <a href="contact.html" class="btn btn-warning btn-sm" style="margin-top: 10px;">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div> </div>
+    </div>
+
+    <footer class="bg-dark text-light">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>&copy; 2026 Sai Shankara Peetha Charitable Trust. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootsnav.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

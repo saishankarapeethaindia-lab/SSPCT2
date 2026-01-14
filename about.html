@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="About Us | Sai Shankara Peetha Charitable Trust">
+    <title>About Us | Sai Shankara Peetha</title>
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/flaticon-set.css" rel="stylesheet">
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/bootsnav.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. GLOBAL THEME VARIABLES --- */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #555;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            color: #0a2351; /* Trust Blue */
+            font-weight: 700;
+        }
+        
+        /* --- 2. BREADCRUMB (Matches Gallery) --- */
+        .breadcrumb-area {
+            background: linear-gradient(135deg, #0a2351 0%, #1a3a6e 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 5px solid #d4a017;
+        }
+        .breadcrumb-area h1 { color: #d4a017; margin-bottom: 10px; }
+        .breadcrumb li a { color: #fff; }
+        .breadcrumb .active { color: #d4a017; }
+
+        /* --- 3. ABOUT SECTION MAGIC --- */
+        .about-area { padding: 80px 0; background: #fff; }
+        
+        /* Magic: Framed Image */
+        .thumb img {
+            border-radius: 10px;
+            box-shadow: 15px 15px 0px rgba(212, 160, 23, 0.2); /* Gold offset shadow */
+            transition: all 0.5s ease;
+            border: 5px solid #fff;
+        }
+        .thumb:hover img {
+            transform: translateY(-5px);
+            box-shadow: 20px 20px 0px rgba(10, 35, 81, 0.1); /* Blue offset on hover */
+        }
+
+        /* Magic: Gradient Text */
+        .gradient-text {
+            background: -webkit-linear-gradient(#d4a017, #f3c64c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-content ul li {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .info-content ul li i {
+            color: #d4a017;
+            margin-right: 10px;
+        }
+
+        /* --- 4. FOUNDER MESSAGE CARD --- */
+        .faq-area {
+            background: #f4f4f4;
+            padding: 80px 0;
+        }
+        .founder-card {
+            background: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 5px solid #0a2351;
+            position: relative;
+            margin-top: 30px;
+        }
+        .founder-card::before {
+            content: "\f10d"; /* FontAwesome Quote Icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #d4a017;
+            color: #fff;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+
+        /* --- 5. CORE VALUES CARDS --- */
+        .services-area { padding: 80px 0; }
+        
+        .value-card {
+            background: #fff;
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-bottom: 3px solid transparent;
+            transition: all 0.4s ease;
+            margin-bottom: 30px;
+            min-height: 320px; /* Aligns heights */
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(10, 35, 81, 0.15);
+            border-bottom: 3px solid #d4a017;
+        }
+
+        .value-icon {
+            font-size: 40px;
+            color: #0a2351;
+            margin-bottom: 20px;
+            transition: 0.4s;
+        }
+        .value-card:hover .value-icon {
+            color: #d4a017;
+            transform: scale(1.1);
+        }
+
+        /* --- 6. FOOTER --- */
+        footer {
+            background: #0a2351; /* Dark Blue */
+            color: #ccc;
+            border-top: 5px solid #d4a017; /* Gold Line */
+        }
+        footer h4 { color: #fff; margin-bottom: 25px; }
+        footer ul li { margin-bottom: 10px; }
+        footer ul li a { color: #ccc; transition: 0.3s; }
+        footer ul li a:hover { color: #d4a017; padding-left: 5px; }
+        footer i { color: #d4a017; margin-right: 10px; }
+        
+        .footer-bottom {
+            background: rgba(0,0,0,0.2);
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar-area address-one-lines bg-dark text-light" style="background: #051636;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 address-info">
+                    <div class="info box">
+                        <ul style="margin: 10px 0;">
+                            <li><i class="fas fa-map-marker-alt" style="color:#d4a017;"></i> R T Nagar, Bangalore - 560032</li>
+                            <li><i class="fas fa-envelope-open" style="color:#d4a017;"></i> saishankarapeetha.india@gmail.com</li>
+                            <li><i class="fas fa-phone" style="color:#d4a017;"></i> +91 70223 51259</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header id="home">
+        <nav class="navbar navbar-default navbar-sticky bootsnav">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/logo.png" class="logo" alt="Logo" style="max-height: 50px;">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active"><a href="about.html" style="color:#d4a017 !important;">About Us</a></li>
+                        <li><a href="services.html">Objectives</a></li>
+                        <li><a href="projects.html">Activities</a></li>
+                        <li><a href="galleryphotos.html">Gallery</a></li>
+                        <li><a href="committee.html">Trustees</a></li>
+                        <li><a href="membership-application-form.html">Membership</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <h1>Who We Are</h1>
+                    <ul class="breadcrumb" style="background: transparent;">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">About Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 thumb">
+                    <img src="assets/img/1.png" alt="Sai Shankara Peetha Vision" class="img-responsive">
+                    <div class="text-center" style="margin-top:15px; color:#0a2351; font-weight:600;">
+                        <small>Founder Mr. Sai Prasad Manikoth with Padmashri Mohanlal</small>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 info-content">
+                    <h4 style="color: #d4a017; text-transform: uppercase; letter-spacing: 2px; font-size: 14px;">About The Trust</h4>
+                    <h1 style="font-size: 36px; margin-top: 10px;">Where Compassion <br> Meets <span class="gradient-text">Spirituality</span></h1>
+                    <p class="lead" style="color: #0a2351; font-style: italic; border-left: 3px solid #d4a017; padding-left: 15px;">
+                        "Service to Man is Service to God."
+                    </p>
+                    <p>
+                        <strong>Sai Shankara Peetha Charitable Trust</strong> was established with a divine mandate: to bridge the gap between ancient spiritual wisdom and modern social responsibility. Headquartered in Bangalore, our organization is dedicated to uplifting the forgotten, feeding the hungry, and healing the sick.
+                    </p>
+                    <p>
+                        Guided by the philosophy of <strong>Adi Shankara</strong> and the compassion of <strong>Shirdi Sai Baba</strong>, we believe that true devotion is expressed through selfless action.
+                    </p>
+                    <ul style="margin-top: 20px;">
+                        <li><i class="fas fa-heartbeat"></i> <strong>Medical Relief:</strong> Healing the sick through free camps.</li>
+                        <li><i class="fas fa-utensils"></i> <strong>Annadhanam:</strong> Ensuring no one sleeps hungry.</li>
+                        <li><i class="fas fa-om"></i> <strong>Spiritual Heritage:</strong> Reviving the Kudajadri legacy.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <h2 style="margin-bottom: 10px;">The <span style="color:#d4a017;">Founder's Message</span></h2>
+                    <p>Words from the heart of our mission</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="founder-card text-center">
+                        <p style="font-style: italic; font-size: 20px; line-height: 1.8; color: #555; font-family: 'Playfair Display', serif;">
+                            "Our mission is simple yet profound: to serve humanity with the same devotion with which we worship God. Whether it is building a temple at Kudajadri or feeding a destitute elder, every act is an offering. We invite you to join hands with us in this sacred journey of 'Seva' and 'Sadhana'."
+                        </p>
+                        <div style="margin-top: 30px;">
+                            <h4 style="margin:0; font-weight: bold; color: #0a2351;">Mr. Sai Prasad Manikoth</h4>
+                            <small style="color: #d4a017; font-weight: 600;">Founder & Managing Trustee</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="services-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center" style="margin-bottom: 50px;">
+                    <h2>Our <span style="color:#d4a017;">Core Values</span></h2>
+                    <p>The Pillars of Sai Shankara Peetha</p>
+                    <div style="width: 60px; height: 3px; background: #d4a017; margin: 15px auto;"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h4>Compassion</h4>
+                        <p>We believe in empathy not just as a feeling, but as an action. Seeing God in every living being is the foundation of our service.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-balance-scale"></i></div>
+                        <h4>Integrity</h4>
+                        <p>Transparency in every donation received and every rupee spent. We hold ourselves accountable to our donors and the divine.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-book-open"></i></div>
+                        <h4>Wisdom</h4>
+                        <p>Promoting the timeless teachings of the Vedas, Yoga, and our great Gurus to enlighten minds and purify hearts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container default-padding" style="padding-top: 50px;">
+            <div class="row">
+                <div class="col-md-4 item">
+                    <h4>Contact Us</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><i class="fas fa-map-marker-alt"></i> No. 281, Hari Om, R T Nagar, Bangalore</li>
+                        <li><i class="fas fa-phone"></i> +91 70223 51259</li>
+                        <li><i class="fas fa-envelope-open"></i> saishankarapeetha.india@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 item">
+                    <h4>Quick Links</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="about.html"><i class="fas fa-angle-right"></i> About Us</a></li>
+                        <li><a href="projects.html"><i class="fas fa-angle-right"></i> Kudajadri Project</a></li>
+                        <li><a href="committee.html"><i class="fas fa-angle-right"></i> Trustees</a></li>
+                        <li><a href="membership-application-form.html"><i class="fas fa-angle-right"></i> Membership</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 item">
+                    <h4>About SSPCT</h4>
+                    <p>
+                        Registered Trust No. 00089.<br>
+                        Dedicated to the upliftment of humanity through spiritual and social service. We bridge tradition with charity.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>&copy; 2026 Sai Shankara Peetha Charitable Trust. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/equal-height.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

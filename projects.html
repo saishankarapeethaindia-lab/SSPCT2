@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Our Projects - Kudajadri's Old Age Haven</title>
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="assets/css/bootsnav.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    
+    <style>
+        /* Banner Style */
+        .breadcrumb-area {
+            background-color: #0a2351; /* Deep Blue */
+            padding: 120px 0;
+            text-align: center;
+            color: #ffffff;
+            /* Optional: Add a subtle pattern overlay if you have one */
+        }
+        .breadcrumb-area h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #d1a000; /* Gold color for prominence */
+        }
+
+        /* Graphic Placeholder for main image */
+        .intro-graphic-placeholder {
+            height: 400px;
+            background: linear-gradient(45deg, #0a2351, #2f4369);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            color: rgba(182, 163, 163, 0.2);
+            font-size: 3em;
+        }
+
+        /* STUNNING SERVICE CARDS */
+        .services-grid {
+            margin-top: 50px;
+        }
+        /* The Card Container */
+        .service-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s ease; /* Smooth transition for hover */
+            height: 100%;
+            border-bottom: 3px solid transparent;
+        }
+        /* HOVER EFFECT: Lift up and show gold border */
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(10, 35, 81, 0.2);
+            border-bottom: 3px solid #d1a000;
+        }
+
+        /* The Graphic/Image Area in the card */
+        .card-graphic {
+            height: 200px;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* A colored overlay that fades in on hover */
+        .card-graphic::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 35, 81, 0.6); /* Blue overlay */
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .service-card:hover .card-graphic::after {
+            opacity: 1;
+        }
+
+        /* Big Icon in the graphic area */
+        .card-graphic i {
+            font-size: 5em;
+            color: #d1a000;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+        /* Icon turns white on hover */
+        .service-card:hover .card-graphic i {
+            color: #fff;
+            transform: scale(1.1); /* Slight zoom */
+        }
+
+        /* Card Content Area */
+        .card-content {
+            padding: 25px;
+            text-align: center;
+        }
+        .card-content h4 {
+            color: #0a2351;
+            font-weight: 700;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+        .card-content p {
+            color: #666;
+        }
+
+        /* Donation Box Styling */
+        .donation-cta-box {
+            background: linear-gradient(to right, #0a2351, #1a3a6e);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 60px;
+            text-align: center;
+            border: 2px solid #d1a000;
+        }
+        .bank-details-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="home">
+        <nav class="navbar navbar-default navbar-sticky bootsnav">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/logo.png" class="logo" alt="Logo">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="committee.html">Trustees</a></li>
+                        <li class="active"><a href="projects.html">Projects</a></li>
+                        <li><a href="galleryphotos.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Kudajadri's Old Age Haven</h1>
+                    <ul class="breadcrumb">
+                        
+                        <a class="nav-link" href="projects.html" style="color: #d4a017; font-size: 18px; font-weight: 500;">OUR PROJECTS</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="projects-details-area default-padding">
+        <div class="container">
+         <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 40px; margin-bottom: 50px;">
+
+    <div style="flex: 1 1 300px; max-width: 450px;">
+        <img src="/www.sreesankaratrust.org.in/assets/img/advisor/1.png" 
+             alt="Advisor Image" 
+             style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: block;">
+    </div>
+
+    <div style="flex: 1 1 400px; min-width: 300px;">
+        
+        <h6 style="color: #d4a017; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; font-size: 13px;">
+            A Sanctuary of Love
+        </h6>
+        
+        <h2 style="font-size: clamp(24px, 5vw, 32px); margin: 0 0 20px 0; line-height: 1.2; color: #2c3e50;">
+            Home Where Hearts <br>Find Peace
+        </h2>
+        
+        <p style="font-size: 16px; line-height: 1.7; color: #555; margin-bottom: 25px;">
+            Nestled in the serene foothills of the sacred Kudajadri Hills, our Old Age Home is not just a shelter—it is a sanctuary of love, dignity, and care. Here, the golden years are not measured in days, but in smiles, shared stories, and the gentle warmth of companionship.
+        </p>
+        
+        <div style="background: #fdfdfd; border-left: 5px solid #d4a017; padding: 15px 20px; font-style: italic; color: #666; border-radius: 0 8px 8px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            "In this quiet corner of nature, where the breeze carries the whispers of ancient forests... we have created a space that feels like home—because it is one."
+        </div>
+
+    </div>
+
+</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="container" style="max-width: 1000px; margin: 0 auto; padding-bottom: 50px;">
+    
+    <h3 style="text-align: center; color: #2c3e50; font-weight: bold; margin-bottom: 40px; font-size: 2em;">
+        Our Core Services & Facilities
+    </h3>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+        
+        <div style="flex: 1 1 250px; max-width: 300px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); text-align: center; border-top: 4px solid #d4a017;">
+            <div style="font-size: 40px; color: #d4a017; margin-bottom: 15px;">
+                <i class="fas fa-home"></i>
+            </div>
+            <h5 style="color: #2c3e50; font-weight: bold; margin-bottom: 15px; font-size: 1.2em;">Old Age Home</h5>
+            <p style="color: #666; font-size: 14px; line-height: 1.6;">
+                A dignified living space where elders are treated as family, filled with respect and comfort.
+            </p>
+        </div>
+
+        <div style="flex: 1 1 250px; max-width: 300px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); text-align: center; border-top: 4px solid #d4a017;">
+            <div style="font-size: 40px; color: #d4a017; margin-bottom: 15px;">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <h5 style="color: #2c3e50; font-weight: bold; margin-bottom: 15px; font-size: 1.2em;">Medical Support</h5>
+            <p style="color: #666; font-size: 14px; line-height: 1.6;">
+                Regular medical checkups and assistance to ensure the well-being of all residents.
+            </p>
+        </div>
+
+        <div style="flex: 1 1 250px; max-width: 300px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); text-align: center; border-top: 4px solid #d4a017;">
+            <div style="font-size: 40px; color: #d4a017; margin-bottom: 15px;">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <h5 style="color: #2c3e50; font-weight: bold; margin-bottom: 15px; font-size: 1.2em;">Annadanam</h5>
+            <p style="color: #666; font-size: 14px; line-height: 1.6;">
+                Providing nutritious food to devotees and the needy as a sacred duty.
+            </p>
+        </div>
+
+        <div style="flex: 1 1 250px; max-width: 300px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); text-align: center; border-top: 4px solid #d4a017;">
+            <div style="font-size: 40px; color: #d4a017; margin-bottom: 15px;">
+                <i class="fas fa-om"></i>
+            </div>
+            <h5 style="color: #2c3e50; font-weight: bold; margin-bottom: 15px; font-size: 1.2em;">Spiritual Life</h5>
+            <p style="color: #666; font-size: 14px; line-height: 1.6;">
+                Blessed by Kudajadri Temple View, Bhadrakali Temple, and Naga Prathista.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+                </div> </div> ```
+
+        
+           <style>
+    .ticket-container {
+        background: linear-gradient(135deg, #ff9a2b 0%, #ff781f 100%);
+        max-width: 600px;
+        margin: 30px auto;
+        border-radius: 12px;
+        color: white;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    .ticket-header {
+        padding: 20px;
+        text-align: center;
+        background: rgba(0,0,0,0.1);
+        border-bottom: 2px dashed rgba(255,255,255,0.5);
+    }
+    .ticket-header h2 { margin: 0; font-size: 1.4em; text-transform: uppercase; letter-spacing: 1px; }
+    .ticket-body { padding: 25px; }
+    
+    .ticket-row {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+    .ticket-label {
+        font-size: 0.85em;
+        text-transform: uppercase;
+        opacity: 0.9;
+        margin-bottom: 4px;
+    }
+    .ticket-value {
+        font-size: 1.1em;
+        font-weight: bold;
+        background: rgba(255,255,255,0.2);
+        padding: 8px 12px;
+        border-radius: 6px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    .big-number {
+        font-family: 'Courier New', monospace;
+        font-size: 1.4em;
+        letter-spacing: 2px;
+        background: white;
+        color: #d35400; /* Dark Orange Text */
+        text-align: center;
+    }
+    .copy-note {
+        text-align: center;
+        font-size: 0.8em;
+        opacity: 0.8;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="ticket-container">
+    <div class="ticket-header">
+        <h2>Official Donation Pass</h2>
+    </div>
+    
+    <div class="ticket-body">
+        <div class="ticket-row">
+            <span class="ticket-label">Account Name</span>
+            <span class="ticket-value">SAI SHANKARA PEETHA CHARITABLE TRUST</span>
+        </div>
+        
+        <div class="ticket-row">
+            <span class="ticket-label">Bank Details</span>
+            <span class="ticket-value">Canara Bank, RT Nagar Branch, Bengaluru</span>
+        </div>
+
+        <div class="ticket-row">
+            <span class="ticket-label">Account Number</span>
+            <span class="ticket-value big-number">120031550695</span>
+        </div>
+
+        <div class="ticket-row">
+            <span class="ticket-label">IFSC Code</span>
+            <span class="ticket-value" style="background: #fff; color: #000; border: 2px solid white; display:inline-block; width: auto;">
+                CNRB0010458
+            </span>
+        </div>
+        
+        <div class="copy-note">All donations are used for Annadanam & Medical Aid</div>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>&copy; 2026 Sai Shankara Peetha Charitable Trust. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootsnav.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photo Gallery | Sai Shankara Peetha Charitable Trust</title>
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <link href="assets/css/bootsnav.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+
+    <style>
+        /* --- 1. HEADER & GLOBAL STYLES --- */
+        body { font-family: 'Open Sans', sans-serif; background: #f9f9f9; }
+        
+        .breadcrumb-area {
+            background: linear-gradient(135deg, #0a2351 0%, #1a3a6e 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 5px solid #d4a017;
+        }
+        .breadcrumb-area h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: #d4a017;
+            margin-bottom: 10px;
+        }
+
+        /* --- 2. FILTER BUTTONS --- */
+        .gallery-nav {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 50px;
+        }
+        .gallery-nav button {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin: 5px;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s;
+            outline: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .gallery-nav button:hover, .gallery-nav button.active {
+            background: #d4a017;
+            color: #fff;
+            border-color: #d4a017;
+            box-shadow: 0 5px 15px rgba(212, 160, 23, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* --- 3. PINTEREST/MASONRY GRID --- */
+        .gallery-container {
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            /* 3 Columns by default */
+            width: 33.33%; 
+            padding: 0 10px; /* Gap between columns */
+            margin-bottom: 20px; /* Gap between rows (vertical) */
+        }
+
+        /* THE PHOTO CARD */
+        .gallery-inner {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px; /* Softer corners */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* Soft shadow */
+            background: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        /* IMAGE HANDLING - NO CROPPING */
+        .gallery-inner img {
+            width: 100%;
+            height: auto; /* Keeps original aspect ratio */
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        /* HOVER EFFECT */
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10, 35, 81, 0.9);
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .gallery-inner:hover .gallery-overlay { opacity: 1; }
+        .gallery-inner:hover img { transform: scale(1.05); }
+
+        .gallery-overlay h4 {
+            color: #d4a017;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 5px;
+            transform: translateY(20px);
+            transition: 0.4s;
+        }
+        .gallery-overlay p {
+            color: #ddd;
+            font-size: 14px;
+            transform: translateY(20px);
+            transition: 0.5s;
+        }
+        .gallery-inner:hover h4, .gallery-inner:hover p {
+            transform: translateY(0);
+        }
+        
+        /* --- QUOTE CARD STYLING --- */
+.quote-card {
+    background: linear-gradient(135deg, #0a2351 0%, #1a3a6e 100%); /* Trust Blue */
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border: 2px solid #d4a017; /* Gold Border */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px; /* Ensures it takes up space */
+    transition: transform 0.3s;
+}
+
+.quote-card:hover {
+    transform: translateY(-5px);
+}
+
+.quote-icon {
+    font-size: 24px;
+    color: #d4a017;
+    margin-bottom: 15px;
+}
+
+.quote-sanskrit {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.quote-english {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #ccc;
+    font-style: italic;
+}
+        /* Icon styling */
+        .icon-box {
+            width: 45px; height: 45px;
+            background: #fff;
+            color: #d4a017;
+            border-radius: 50%;
+            line-height: 45px;
+            margin-top: 15px;
+            font-size: 18px;
+            transform: scale(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .gallery-inner:hover .icon-box { transform: scale(1); }
+
+        /* Responsive Columns */
+        @media(max-width: 991px) { 
+            .gallery-item { width: 50%; } 
+        }
+        @media(max-width: 600px) { 
+            .gallery-item { width: 100%; padding: 0; } 
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header id="home">
+        <nav class="navbar navbar-default navbar-sticky bootsnav">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/logo.png" class="logo" alt="Logo" style="height:50px;">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="committee.html">Trustees</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li class="active"><a href="galleryphotos.html" style="color: #d4a017;">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Gallery</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="index.html" style="color:#fff;">Home</a></li>
+                        <li class="active" style="color:#d4a017;">Gallery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding-bottom: 80px;">
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="gallery-nav">
+                    <button class="active" data-filter="*">All Photos</button>
+                    <button data-filter=".visit">Celebrity Visits</button>
+                    <button data-filter=".community">Community Service</button>
+                    <button data-filter=".events">Events</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-container">
+    
+    <div class="gallery-item visit">
+        <div class="gallery-inner">
+            <img src="/www.sreesankaratrust.org.in/assets/img/gallery7.png" alt="Distinguished Visit">
+            <a href="/www.sreesankaratrust.org.in/assets/img/gallery7.png" class="gallery-popup" title="Distinguished Visit">
+                <div class="gallery-overlay">
+                    <h4>Distinguished Visit</h4>
+                    <p>Honoring our guests</p>
+                    <div class="icon-box"><i class="fas fa-expand"></i></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="gallery-item visit community events">
+        <div class="quote-card">
+            <div class="quote-icon"><i class="fas fa-hands-helping"></i></div>
+            <div class="quote-sanskrit">
+                "Paropakaraya Punyaya"
+            </div>
+            <div class="quote-english">
+                Helping others is the highest merit.
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-item community">
+        <div class="gallery-inner">
+            <img src="/www.sreesankaratrust.org.in/assets/img/gallery8.png" alt="Community Support">
+            <a href="/www.sreesankaratrust.org.in/assets/img/gallery8.png" class="gallery-popup" title="Community Support">
+                <div class="gallery-overlay">
+                    <h4>Community Support</h4>
+                    <p>Moments of shared joy</p>
+                    <div class="icon-box"><i class="fas fa-expand"></i></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="gallery-item community visit">
+        <div class="quote-card">
+            <div class="quote-icon"><i class="fas fa-globe-asia"></i></div>
+            <div class="quote-sanskrit">
+                "Vasudhaiva Kutumbakam"
+            </div>
+            <div class="quote-english">
+                The whole world is one single family.
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-item events">
+        <div class="gallery-inner">
+            <img src="/www.sreesankaratrust.org.in/assets/img/gallery9.png" alt="Special Occasion">
+            <a href="/www.sreesankaratrust.org.in/assets/img/gallery9.png" class="gallery-popup" title="Special Occasion">
+                <div class="gallery-overlay">
+                    <h4>Special Occasion</h4>
+                    <p>Celebrating together</p>
+                    <div class="icon-box"><i class="fas fa-expand"></i></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="gallery-item community">
+        <div class="gallery-inner">
+            <img src="/www.sreesankaratrust.org.in/assets/img/gallery10.png" alt="Supporters">
+            <a href="/www.sreesankaratrust.org.in/assets/img/gallery10.png" class="gallery-popup" title="Supporters">
+                <div class="gallery-overlay">
+                    <h4>Our Supporters</h4>
+                    <p>Building our future</p>
+                    <div class="icon-box"><i class="fas fa-expand"></i></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="gallery-item events community">
+        <div class="quote-card">
+            <div class="quote-icon"><i class="fas fa-spa"></i></div>
+            <div class="quote-sanskrit">
+                "Loka Samasta Sukhino Bhavantu"
+            </div>
+            <div class="quote-english">
+                May all beings everywhere be happy and free.
+            </div>
+        </div>
+    </div>
+
+</div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootsnav.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            
+            // 1. Initialize Isotope with MASONRY layout
+            var $grid = $('.gallery-container').isotope({
+                itemSelector: '.gallery-item',
+                layoutMode: 'masonry', // <--- THIS IS THE KEY FIX
+                masonry: {
+                    columnWidth: '.gallery-item',
+                    horizontalOrder: true // Keeps order clearer
+                }
+            });
+
+            // 2. Filter logic (remains the same)
+            $('.gallery-nav button').on('click', function(){
+                $('.gallery-nav button').removeClass('active');
+                $(this).addClass('active');
+                var value = $(this).attr('data-filter');
+                $grid.isotope({ filter: value });
+            });
+
+            // 3. Fix Layout on Image Load 
+            // (Important because images of different sizes load at different speeds)
+            // If you find images overlapping, you might need the 'imagesLoaded' library. 
+            // For now, this timeout helps ensure layout runs after images appear.
+            setTimeout(function() {
+                $grid.isotope('layout');
+            }, 500);
+
+            // 4. Lightbox Init
+            $('.gallery-popup').magnificPopup({
+                type: 'image',
+                gallery: { enabled: true, navigateByImgClick: true, preload: [0,1] },
+                mainClass: 'mfp-with-zoom', 
+                zoom: { enabled: true, duration: 300 }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
