@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Sai Shankara Peetha Charitable Trust | Service to Humanity">
-  <meta name="author" content="Sai Shankara Peetha">
   <title>Sai Shankara Peetha Charitable Trust</title>
 
   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
@@ -13,12 +12,42 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap"
     rel="stylesheet">
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <style>
+
+    /* Big Logo Styling */
+.navbar-brand img { 
+  max-height: 75px; /* Increased from 60px */
+  width: auto;
+  margin-right: 15px;
+}
+
+/* Container for the text to stack it vertically */
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1; /* Tighter spacing between lines */
+}
+
+/* "Sai Shankara" Style */
+.brand-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary-color); /* Dark Blue */
+    text-transform: uppercase;
+}
+
+/* "Peetha Charitable Trust" Style */
+.brand-subtitle {
+    font-size: 0.85rem;
+    color: var(--secondary-color); /* Gold */
+    font-weight: 600;
+    letter-spacing: 1px;
+}
     :root {
       --primary-color: #0a2351;
       /* Deep Trust Blue */
@@ -85,16 +114,41 @@
       color: var(--primary-color);
     }
 
-    /* Navigation */
+    /* Navigation & Logo Styling */
     .navbar {
       background-color: #fff;
       box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-      padding: 15px 0;
+     padding: 10px 0; /* Ensures the header bar is tall enough for the 75px logo */
+}
+      /* Adjusted padding */
     }
 
     .navbar-brand img {
-      max-height: 60px;
-      /* Adjust based on your logo */
+      max-height: 75px;
+      /* INCREASED SIZE as requested */
+      width: auto;
+      margin-right: 15px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1.1;
+    }
+
+    .brand-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      font-size: 0.85rem;
+      color: var(--secondary-color);
+      font-weight: 600;
+      letter-spacing: 1px;
     }
 
     .nav-link {
@@ -127,11 +181,10 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.5);
-      /* Overlay for readability */
     }
 
     .carousel-caption {
-      bottom: 35%;
+      bottom: 30%;
       z-index: 2;
     }
 
@@ -163,6 +216,7 @@
     .btn-theme:hover {
       background-color: transparent;
       color: var(--secondary-color);
+      border-color: #fff;
     }
 
     /* About Section */
@@ -192,7 +246,7 @@
       background: var(--secondary-color);
     }
 
-    /* Services / Objectives */
+    /* Services */
     .services-section {
       background-color: #f9f9f9;
       padding: 80px 0;
@@ -253,19 +307,98 @@
       font-size: 0.9rem;
     }
 
-    /* Responsive Adjustments */
+    /* --- DONATION TICKET STYLE (From your Project.html) --- */
+    .ticket-container {
+      background: linear-gradient(135deg, #ff9a2b 0%, #ff781f 100%);
+      width: 100%;
+      border-radius: 12px;
+      color: white;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .ticket-header {
+      padding: 15px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.1);
+      border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
+    }
+
+    .ticket-header h2 {
+      margin: 0;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .ticket-body {
+      padding: 20px;
+    }
+
+    .ticket-row {
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ticket-label {
+      font-size: 0.75em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin-bottom: 4px;
+      color: #ffe6cc;
+    }
+
+    .ticket-value {
+      font-size: 0.95em;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .big-number {
+      font-family: 'Courier New', monospace;
+      font-size: 1.2em;
+      letter-spacing: 1px;
+      background: white;
+      color: #d35400;
+      /* Dark Orange Text */
+      text-align: center;
+    }
+
+    .copy-note {
+      text-align: center;
+      font-size: 0.7em;
+      opacity: 0.8;
+      margin-top: 10px;
+    }
+
     @media (max-width: 768px) {
       .top-bar {
         display: none;
       }
 
-      /* Hide top bar on mobile to save space */
       .carousel-caption h1 {
         font-size: 2rem;
       }
 
-      .carousel-item {
-        height: 60vh;
+      .brand-title {
+        font-size: 1.2rem;
+      }
+
+      .brand-subtitle {
+        font-size: 0.7rem;
+      }
+
+      .navbar-brand img {
+        max-height: 60px;
       }
     }
   </style>
@@ -294,15 +427,15 @@
 
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <div class="d-flex align-items-center">
-          <img src="https://placehold.co/60x60/0a2351/d1a000?text=SSP" alt="Logo" class="me-2 rounded">
-          <div class="d-flex flex-column">
-            <span style="font-weight: 700; color: var(--primary-color); line-height: 1.2;">Sai Shankara</span>
-            <span style="font-size: 0.8rem; color: var(--secondary-color);">Peetha Charitable Trust</span>
-          </div>
-        </div>
-      </a>
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+  <img src="/assets/img/logo.png"Logo" class="img-fluid rounded">
+  
+  <div class="brand-text ms-2">
+      <span class="brand-title">Sai Shankara</span>
+      <span class="brand-subtitle">Peetha Charitable Trust</span>
+  </div>
+</a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -326,10 +459,10 @@
 
   <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-        aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+        aria-current="true"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active"
@@ -338,23 +471,23 @@
           <div class="row h-100 align-items-center">
             <div class="col-lg-8">
               <div class="carousel-caption text-start">
-                <h1 class="animate__animated animate__fadeInDown">Sai Shankara Peetha <span>Charitable Trust (SSPCT)</span></h1>
+                <h1 class="animate__animated animate__fadeInDown">Sai Shankara Peetha <span>Charitable Trust</span></h1>
                 <p class="animate__animated animate__fadeInUp">Dedicated to Education, Medical Relief, Annadhanam, and
-                  Spiritual Service for the betterment of humanity.</p>
+                  Spiritual Service.</p>
                 <a href="about.html" class="btn btn-theme animate__animated animate__fadeInUp">Know More</a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="carousel-item"
-        style="background-image: url('assets/img/slider3.JPG'); background-color: #555;">
+      <div class="carousel-item" style="background-image: url('assets/img/slider3.JPG'); background-color: #555;">
         <div class="container h-100">
           <div class="row h-100 align-items-center">
             <div class="col-lg-8">
               <div class="carousel-caption text-start">
-                <h1>The Sacred Gift of  <span>Food</span></h1>
-                <p>Annadanam is the Highest Worship Description: "We believe that no prayer is complete without feeding the hungry. Our Annadanam initiative provides hot, nutritious meals daily to devotees, pilgrims, and the destitute, ensuring no one sleeps on an empty stomach.</p>
+                <h1>The Sacred Gift of <span>Food</span></h1>
+                <p>Annadanam is the Highest Worship. We provide hot, nutritious meals daily ensuring no one sleeps
+                  hungry.</p>
                 <a href="projects.html" class="btn btn-theme">Our Activities</a>
               </div>
             </div>
@@ -366,8 +499,8 @@
           <div class="row h-100 align-items-center">
             <div class="col-lg-8">
               <div class="carousel-caption text-start">
-                <h1>Handicaps Caring  <br><span>Center</span></h1>
-                <p>We focus on what is possible. Providing therapy, care, and a supportive community for special souls</p>
+                <h1>Compassion & <br><span>Care</span></h1>
+                <p>Providing therapy, care, and a supportive community for special souls.</p>
                 <a href="contact.html" class="btn btn-theme">Contact Us</a>
               </div>
             </div>
@@ -389,9 +522,8 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-5 mb-4 mb-lg-0">
-          <img src="assets/img/gallery2.JPG" onerror="assets/img/gallery2.JPG"
-            class="img-fluid about-img w-100" alt="About Sai Shankara Peetha">
-        </div>
+            <img src="assets/img/gallery2.png" alt="About Sai Shankara Peetha" class="img-fluid about-img w-100">
+          </div>
         <div class="col-lg-7 ps-lg-5">
           <h4 class="text-uppercase text-secondary mb-2">Who We Are</h4>
           <h2 class="section-title text-dark">Service to Humanity is Service to God</h2>
@@ -440,9 +572,7 @@
       <div class="row g-4">
         <div class="col-md-6 col-lg-3">
           <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
+            <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
             <h4>Education</h4>
             <p class="text-muted">Supporting students with scholarships and educational materials to build a brighter
               future.</p>
@@ -450,9 +580,7 @@
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-heartbeat"></i>
-            </div>
+            <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
             <h4>Medical Relief</h4>
             <p class="text-muted">Conducting health camps and providing financial aid for medical treatments for the
               poor.</p>
@@ -460,18 +588,14 @@
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-utensils"></i>
-            </div>
+            <div class="service-icon"><i class="fas fa-utensils"></i></div>
             <h4>Annadhanam</h4>
             <p class="text-muted">Providing nutritious food to the hungry and destitute as a supreme act of charity.</p>
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-om"></i>
-            </div>
+            <div class="service-icon"><i class="fas fa-om"></i></div>
             <h4>Spiritual Service</h4>
             <p class="text-muted">Promoting peace and harmony through spiritual discourses and community prayers.</p>
           </div>
@@ -481,8 +605,9 @@
   </section>
 
   <footer>
-    <div class="carousel-item" style="background-image: url('assets/img/sreesankaratrust.jpg'); background-color: #555;">
-                <div class="container h-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
           <h5>Sai Shankara Peetha</h5>
           <p class="text-white-50">A Charitable Trust dedicated to serving humanity through various social, educational,
             and spiritual initiatives. Join us in making a difference.</p>
@@ -492,6 +617,7 @@
             <a href="#" class="me-3 fs-5"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
+
         <div class="col-lg-2 col-md-6 mb-4">
           <h5>Quick Links</h5>
           <ul class="list-unstyled">
@@ -502,7 +628,8 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
+
+        <div class="col-lg-2 col-md-6 mb-4">
           <h5>Our Works</h5>
           <ul class="list-unstyled">
             <li><a href="services.html">Educational Support</a></li>
@@ -511,16 +638,33 @@
             <li><a href="election2025.html" class="text-warning">Trust Election 2025</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <h5>Contact Us</h5>
-          <ul class="list-unstyled text-white-50">
-            <li><i class="fas fa-map-marker-alt me-2 text-warning"></i> No. 281, Hari Om, R T Nagar, Bangalore - 560032
-            </li>
-            <li><i class="fas fa-phone me-2 text-warning"></i> +91 70223 51259</li>
-            <li><i class="fas fa-envelope me-2 text-warning"></i> saishankarapeetha.india@gmail.com</li>
-          </ul>
+
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="ticket-container">
+            <div class="ticket-header">
+              <h2>Official Donation Pass</h2>
+            </div>
+            <div class="ticket-body">
+              <div class="ticket-row">
+                <span class="ticket-label">Account Name</span>
+                <span class="ticket-value">SAI SHANKARA PEETHA CHARITABLE TRUST</span>
+              </div>
+              <div class="ticket-row">
+                <span class="ticket-label">Account Number</span>
+                <span class="ticket-value big-number">120031550695</span>
+              </div>
+              <div class="ticket-row">
+                <span class="ticket-label">IFSC Code</span>
+                <span class="ticket-value" style="background: #fff; color: #000; display:inline-block; width: auto;">
+                  CNRB0010458
+                </span>
+              </div>
+              <div class="copy-note">All donations are used for Annadanam & Medical Aid</div>
+            </div>
+          </div>
         </div>
       </div>
+
       <div class="footer-bottom">
         <p class="mb-0">&copy; 2025 Sai Shankara Peetha Charitable Trust. All Rights Reserved.</p>
       </div>

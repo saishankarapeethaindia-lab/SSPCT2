@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <!-- Swiper CSS for Carousel view -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 
     <style>
         /* --- 1. HEADER & GLOBAL STYLES --- */
@@ -41,6 +43,21 @@
             margin-bottom: 40px;
             margin-top: 50px;
         }
+        .view-toggle {
+            display: inline-flex;
+            gap: 8px;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+        .view-toggle button {
+            background: transparent;
+            border: 1px solid #ddd;
+            color: #333;
+            padding: 8px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .view-toggle button.active { background:#d4a017; color:#fff; border-color:#d4a017; }
         .gallery-nav button {
             background: #fff;
             border: 1px solid #ddd;
@@ -72,7 +89,9 @@
             width: 33.33%; 
             padding: 0 10px; /* Gap between columns */
             margin-bottom: 20px; /* Gap between rows (vertical) */
+            box-sizing: border-box; /* include padding in width so isotope calculates correctly */
         }
+        .grid-sizer { width: 33.33%; box-sizing: border-box; }
 
         /* THE PHOTO CARD */
         .gallery-inner {
@@ -89,7 +108,8 @@
             width: 100%;
             height: auto; /* Keeps original aspect ratio */
             display: block;
-            transition: transform 0.5s ease;
+            transition: transform 0.45s cubic-bezier(0.2,0.8,0.2,1);
+            transform-origin: center center;
         }
 
         /* HOVER EFFECT */
@@ -107,7 +127,49 @@
             padding: 20px;
         }
         .gallery-inner:hover .gallery-overlay { opacity: 1; }
-        .gallery-inner:hover img { transform: scale(1.05); }
+        .gallery-inner:hover img { transform: scale(1.12); }
+
+        /* --- HORIZONTAL SEEK MODE --- */
+        .gallery-container.horizontal-seek {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            padding: 10px 0;
+        }
+        .gallery-container.horizontal-seek .gallery-item {
+            width: auto; /* remove percentage width */
+            flex: 0 0 320px; /* fixed card width in seek mode */
+            display: inline-block;
+            margin-right: 16px;
+        }
+        .gallery-container.horizontal-seek .grid-sizer { display:none; }
+
+        /* --- FLOW MODE (continuous left->right) --- */
+        .gallery-container.horizontal-flow {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+            align-items: stretch;
+        }
+        .gallery-container.horizontal-flow .gallery-item {
+            width: auto;
+            flex: 0 0 320px;
+            margin-right: 16px;
+            transition: transform 0.35s ease;
+        }
+        /* Stop flow visual state */
+        .gallery-container.horizontal-flow.flow-paused { /* optional visual hint */ }
+        /* Hover zoom in flow mode */
+        .gallery-container.horizontal-flow .gallery-item img {
+            transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+            transform-origin: center center;
+        }
+        .gallery-container.horizontal-flow .gallery-item:hover img {
+            transform: scale(1.28);
+        }
 
         .gallery-overlay h4 {
             color: #d4a017;
@@ -190,35 +252,34 @@
             .gallery-item { width: 100%; padding: 0; } 
         }
 
+        /* --- COLLAGE (RECTANGULAR GRID) --- */
+        .gallery-container.collage {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            align-items: stretch;
+        }
+        .gallery-container.collage .gallery-item {
+            width: auto;
+            margin: 0;
+        }
+        .gallery-container.collage .gallery-inner {
+            height: 100%;
+            aspect-ratio: 4 / 3;
+        }
+        .gallery-container.collage .gallery-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
     </style>
 </head>
 
 <body>
 
-    <header id="home">
-        <nav class="navbar navbar-default navbar-sticky bootsnav">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="index.html">
-                        <img src="assets/img/logo.png" class="logo" alt="Logo" style="height:50px;">
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="committee.html">Trustees</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li class="active"><a href="galleryphotos.html" style="color: #d4a017;">Gallery</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <div id="header-placeholder"></div>
 
     <div class="breadcrumb-area">
         <div class="container">
@@ -243,16 +304,34 @@
                     <button data-filter=".visit">Celebrity Visits</button>
                     <button data-filter=".community">Community Service</button>
                     <button data-filter=".events">Events</button>
+                    <span class="view-toggle" title="Switch view">
+                        <button id="btn-grid" class="active" aria-label="Grid view"><i class="fas fa-th"></i></button>
+                        <button id="btn-carousel" aria-label="Carousel view"><i class="fas fa-clone"></i></button>
+                        <button id="btn-seek" title="Horizontal seek" aria-label="Horizontal seek"><i class="fas fa-arrows-alt-h"></i></button>
+                        <button id="btn-coverflow" title="Coverflow view" aria-label="Coverflow view"><i class="fas fa-layer-group"></i></button>
+                        <button id="btn-flow" title="Flowing view" aria-label="Flowing view"><i class="fas fa-stream"></i></button>
+                    </span>
                 </div>
             </div>
         </div>
 
+        <!-- Carousel container (hidden by default) -->
+        <div class="swiper-container" id="gallery-swiper" style="display:none; margin-bottom:30px;">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
         <div class="gallery-container">
+            <div class="grid-sizer"></div>
     
     <div class="gallery-item visit">
         <div class="gallery-inner">
-            <img src="/www.sreesankaratrust.org.in/assets/img/gallery7.png" alt="Distinguished Visit">
-            <a href="/www.sreesankaratrust.org.in/assets/img/gallery7.png" class="gallery-popup" title="Distinguished Visit">
+            <img src="assets/img/gallery7.png" alt="Distinguished Visit">
+            <a href="assets/img/gallery7.png" class="gallery-popup" title="Distinguished Visit">
                 <div class="gallery-overlay">
                     <h4>Distinguished Visit</h4>
                     <p>Honoring our guests</p>
@@ -276,8 +355,8 @@
 
     <div class="gallery-item community">
         <div class="gallery-inner">
-            <img src="/www.sreesankaratrust.org.in/assets/img/gallery8.png" alt="Community Support">
-            <a href="/www.sreesankaratrust.org.in/assets/img/gallery8.png" class="gallery-popup" title="Community Support">
+            <img src="assets/img/gallery8.png" alt="Community Support">
+            <a href="assets/img/gallery8.png" class="gallery-popup" title="Community Support">
                 <div class="gallery-overlay">
                     <h4>Community Support</h4>
                     <p>Moments of shared joy</p>
@@ -301,8 +380,8 @@
 
     <div class="gallery-item events">
         <div class="gallery-inner">
-            <img src="/www.sreesankaratrust.org.in/assets/img/gallery9.png" alt="Special Occasion">
-            <a href="/www.sreesankaratrust.org.in/assets/img/gallery9.png" class="gallery-popup" title="Special Occasion">
+            <img src="assets/img/gallery9.png" alt="Special Occasion">
+            <a href="assets/img/gallery9.png" class="gallery-popup" title="Special Occasion">
                 <div class="gallery-overlay">
                     <h4>Special Occasion</h4>
                     <p>Celebrating together</p>
@@ -314,8 +393,8 @@
 
     <div class="gallery-item community">
         <div class="gallery-inner">
-            <img src="/www.sreesankaratrust.org.in/assets/img/gallery10.png" alt="Supporters">
-            <a href="/www.sreesankaratrust.org.in/assets/img/gallery10.png" class="gallery-popup" title="Supporters">
+            <img src="assets/img/gallery10.png" alt="Supporters">
+            <a href="assets/img/gallery10.png" class="gallery-popup" title="Supporters">
                 <div class="gallery-overlay">
                     <h4>Our Supporters</h4>
                     <p>Building our future</p>
@@ -338,7 +417,6 @@
     </div>
 
 </div>
-    </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -346,36 +424,82 @@
     <script src="assets/js/main.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
     <script>
         $(document).ready(function(){
+            try {
+                console.log('Initializing galleryphotos.js');
             
-            // 1. Initialize Isotope with MASONRY layout
-            var $grid = $('.gallery-container').isotope({
-                itemSelector: '.gallery-item',
-                layoutMode: 'masonry', // <--- THIS IS THE KEY FIX
-                masonry: {
-                    columnWidth: '.gallery-item',
-                    horizontalOrder: true // Keeps order clearer
-                }
-            });
+            // 1. Initialize Isotope with MASONRY layout (wrapped so we can re-init after destroying)
+            var $grid = null;
+            function initIsotopeGrid() {
+                $grid = $('.gallery-container').isotope({
+                    itemSelector: '.gallery-item',
+                    layoutMode: 'masonry',
+                    masonry: {
+                        columnWidth: '.gallery-item',
+                        horizontalOrder: true
+                    }
+                });
 
-            // 2. Filter logic (remains the same)
-            $('.gallery-nav button').on('click', function(){
-                $('.gallery-nav button').removeClass('active');
+                // Fix Layout on Image Load using imagesLoaded (use function form)
+                try {
+                    imagesLoaded('.gallery-container').on('progress', function() {
+                        try { $grid.isotope('layout'); } catch(e) {}
+                    });
+                } catch(e) {
+                    console.warn('imagesLoaded not available:', e);
+                }
+            }
+
+            // initial init
+            initIsotopeGrid();
+
+            // If isotope failed to initialize, provide a simple fallback filter
+            function bindFallbackFilters() {
+                console.warn('Binding fallback filters (no Isotope).');
+                $('.gallery-nav button[data-filter]').off('click').on('click', function(){
+                    $('.gallery-nav button[data-filter]').removeClass('active');
+                    $(this).addClass('active');
+                    var value = $(this).attr('data-filter');
+                    if (!value || value === '*') {
+                        $('.gallery-item').show();
+                    } else {
+                        $('.gallery-item').hide();
+                        $('.gallery-item').filter(value).show();
+                    }
+                });
+            }
+            try { if (!$grid || !$grid.data('isotope')) bindFallbackFilters(); } catch(e) { bindFallbackFilters(); }
+
+            // 2. Filter logic: only buttons that have a data-filter attribute
+            $('.gallery-nav button[data-filter]').on('click', function(){
+                // only toggle active among filter buttons
+                $('.gallery-nav button[data-filter]').removeClass('active');
                 $(this).addClass('active');
                 var value = $(this).attr('data-filter');
-                $grid.isotope({ filter: value });
+                // If collage layout is active, do a simple show/hide
+                if ($('.gallery-container').hasClass('collage')) {
+                    if (!value || value === '*') {
+                        $('.gallery-item').show();
+                    } else {
+                        $('.gallery-item').hide();
+                        $('.gallery-item').filter(value).show();
+                    }
+                    return;
+                }
+                try { $grid.isotope({ filter: value }); } catch(e) {}
             });
 
-            // 3. Fix Layout on Image Load 
-            // (Important because images of different sizes load at different speeds)
-            // If you find images overlapping, you might need the 'imagesLoaded' library. 
-            // For now, this timeout helps ensure layout runs after images appear.
-            setTimeout(function() {
-                $grid.isotope('layout');
-            }, 500);
+            // 3. Fix Layout on Image Load using imagesLoaded (function form)
+            try {
+                imagesLoaded('.gallery-container').on('progress', function() {
+                    try { $grid.isotope('layout'); } catch(e) {}
+                });
+            } catch(e) { console.warn('imagesLoaded not available at layout step:', e); }
 
             // 4. Lightbox Init
             $('.gallery-popup').magnificPopup({
@@ -385,8 +509,345 @@
                 zoom: { enabled: true, duration: 300 }
             });
 
+            // View toggle state
+            var swiperInstance = null;
+            function buildSwiperSlides() {
+                var $wrapper = $('#gallery-swiper .swiper-wrapper').empty();
+                // move current visible items into slides snapshot (images and quote-cards)
+                $('.gallery-item').each(function() {
+                    var $it = $(this).clone();
+                    // if item contains image
+                    var $img = $it.find('img');
+                    if ($img.length) {
+                        var src = $img.attr('src');
+                        var title = $it.find('.gallery-overlay h4').text() || '';
+                        var caption = $it.find('.gallery-overlay p').text() || '';
+                        var slide = $('<div class="swiper-slide"></div>');
+                        slide.append('<div class="slide-inner" style="text-align:center;"><img src="'+src+'" style="max-width:100%;height:auto;border-radius:8px;display:block;margin:0 auto;">');
+                        if(title || caption) slide.append('<div style="margin-top:10px;color:#333;"><strong>'+title+'</strong><div style="color:#666">'+caption+'</div></div>');
+                        $wrapper.append(slide);
+                    } else if ($it.find('.quote-card').length) {
+                        var q = $it.find('.quote-card').prop('outerHTML');
+                        var slide = $('<div class="swiper-slide"></div>');
+                        slide.append('<div style="display:flex;align-items:center;justify-content:center;height:100%;">'+q+'</div>');
+                        $wrapper.append(slide);
+                    }
+                });
+            }
+
+            function initSwiper() {
+                buildSwiperSlides();
+                if (swiperInstance) swiperInstance.destroy(true, true);
+                swiperInstance = new Swiper('.mySwiper', {
+                    loop: true,
+                    autoplay: { delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true },
+                    pagination: { el: '.swiper-pagination', clickable: true },
+                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                    spaceBetween: 20,
+                    centeredSlides: true,
+                    slidesPerView: 1,
+                    grabCursor: true,
+                    touchRatio: 1,
+                    threshold: 5,
+                    resistanceRatio: 0.85
+                });
+
+                // Safe hover fallback: pause/play autoplay on mouseenter/mouseleave
+                $('#gallery-swiper').off('mouseenter.swiperHover mouseleave.swiperHover')
+                    .on('mouseenter.swiperHover', function() { try { if (swiperInstance && swiperInstance.autoplay) swiperInstance.autoplay.stop(); } catch(e){} })
+                    .on('mouseleave.swiperHover', function() { try { if (swiperInstance && swiperInstance.autoplay) swiperInstance.autoplay.start(); } catch(e){} });
+            }
+
+            // COVERFLOW view using Swiper's coverflow effect
+            function initCoverflow() {
+                buildSwiperSlides();
+                if (swiperInstance) swiperInstance.destroy(true, true);
+                swiperInstance = new Swiper('.mySwiper', {
+                    effect: 'coverflow',
+                    loop: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    spaceBetween: 40,
+                    coverflowEffect: {
+                        rotate: 30,
+                        stretch: 0,
+                        depth: 200,
+                        modifier: 1,
+                        slideShadows: true,
+                    },
+                    autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
+                    pagination: { el: '.swiper-pagination', clickable: true },
+                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+                });
+
+                // Hover fallback for coverflow as well
+                $('#gallery-swiper').off('mouseenter.swiperHover mouseleave.swiperHover')
+                    .on('mouseenter.swiperHover', function() { try { if (swiperInstance && swiperInstance.autoplay) swiperInstance.autoplay.stop(); } catch(e){} })
+                    .on('mouseleave.swiperHover', function() { try { if (swiperInstance && swiperInstance.autoplay) swiperInstance.autoplay.start(); } catch(e){} });
+            }
+
+            function showCarousel() {
+                // stop isotope dynamics
+                stopDynamics();
+                // hide grid and show swiper
+                $('.gallery-container').hide().removeClass('collage');
+                $('#gallery-swiper').show();
+                initSwiper();
+            }
+
+            function showCoverflow() {
+                stopDynamics();
+                $('.gallery-container').hide().removeClass('collage');
+                $('#gallery-swiper').show();
+                initCoverflow();
+            }
+
+            // FLOW MODE: continuous left -> right movement
+            var flowState = {
+                enabled: false,
+                raf: null,
+                lastTs: null,
+                speed: 80, // px per second
+                paused: false,
+                originalWidth: 0
+            };
+
+            function enableFlowMode() {
+                if (flowState.enabled) return;
+                flowState.enabled = true;
+                // stop other dynamics and destroy isotope
+                stopDynamics();
+                try { if ($grid && $grid.data('isotope')) { $grid.isotope('destroy'); } } catch(e) {}
+                $('.gallery-item').css({ position: 'static', left: '', top: '' });
+                var $c = $('.gallery-container');
+                // remove collage layout if present
+                $c.removeClass('collage');
+                // ensure no leftover clones
+                $c.find('.flow-clone').remove();
+                // compute original width and then duplicate items for seamless loop
+                flowState.originalWidth = $c[0].scrollWidth || 0;
+                var $items = $c.children('.gallery-item').not('.flow-clone').clone().addClass('flow-clone');
+                $c.append($items);
+                // make sure layout uses flow styles
+                $c.addClass('horizontal-flow');
+                $c[0].scrollLeft = 0;
+                flowState.lastTs = performance.now();
+                flowState.paused = false;
+
+                // pause on hover over any item
+                $c.off('mouseenter.flow mouseleave.flow').on('mouseenter.flow', '.gallery-item', function(){ flowState.paused = true; $c.addClass('flow-paused'); })
+                    .on('mouseleave.flow', '.gallery-item', function(){ flowState.paused = false; $c.removeClass('flow-paused'); });
+
+                // RAF loop
+                function step(ts) {
+                    flowState.raf = requestAnimationFrame(step);
+                    if (flowState.paused) { flowState.lastTs = ts; return; }
+                    var dt = (ts - flowState.lastTs) / 1000;
+                    flowState.lastTs = ts;
+                    var move = flowState.speed * dt;
+                    var el = $c[0];
+                    var newScroll = el.scrollLeft + move;
+                    if (flowState.originalWidth && newScroll >= flowState.originalWidth) {
+                        newScroll = newScroll - flowState.originalWidth;
+                    }
+                    el.scrollLeft = newScroll;
+                }
+                flowState.raf = requestAnimationFrame(step);
+            }
+
+            function disableFlowMode() {
+                if (!flowState.enabled) return;
+                flowState.enabled = false;
+                var $c = $('.gallery-container');
+                // stop RAF
+                if (flowState.raf) { cancelAnimationFrame(flowState.raf); flowState.raf = null; }
+                flowState.lastTs = null;
+                // remove clones
+                $c.find('.flow-clone').remove();
+                $c.off('mouseenter.flow mouseleave.flow');
+                $c.removeClass('horizontal-flow flow-paused');
+                $c[0].scrollLeft = 0;
+                // re-init isotope
+                try { initIsotopeGrid(); } catch(e) { initIsotopeGrid(); }
+                startDynamics();
+            }
+
+            // Shuffle items by randomizing DOM order (works for collage/grid and as fallback)
+            function shuffleItems() {
+                var $c = $('.gallery-container');
+                var items = $c.children('.gallery-item').toArray();
+                // Fisher-Yates shuffle
+                for (var i = items.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+                }
+                // append in new order
+                items.forEach(function(it){ $c.append(it); });
+                // if isotope present, trigger layout
+                try { if ($grid && $grid.data('isotope')) $grid.isotope('layout'); } catch(e) {}
+            }
+
+            function showGrid() {
+                // destroy swiper
+                if (swiperInstance) { swiperInstance.destroy(true, true); swiperInstance = null; }
+                $('#gallery-swiper').hide();
+                $('.gallery-container').show();
+                // remove any flow/seek classes
+                $('.gallery-container').removeClass('horizontal-flow horizontal-seek');
+                // enable collage layout (CSS Grid) for perfect rectangle
+                $('.gallery-container').addClass('collage');
+                // if isotope was active previously, destroy it to allow CSS Grid
+                try { if ($grid && $grid.data('isotope')) { $grid.isotope('destroy'); $grid = null; } } catch(e) {}
+                // ensure items are visible
+                $('.gallery-item').show();
+                // reflow
+                try { shuffleItems(); } catch(e) {}
+                startDynamics();
+            }
+
+            // SEEK MODE
+            var seekMode = false;
+            var seekMouseHandler = null;
+
+            function enableSeekMode() {
+                if (seekMode) return;
+                seekMode = true;
+                // stop dynamics and destroy isotope so items are not absolutely positioned
+                stopDynamics();
+                try { if ($grid && $grid.data('isotope')) { $grid.isotope('destroy'); } } catch(e) {}
+                // remove inline positions left by isotope
+                $('.gallery-item').css({ position: 'static', left: '', top: '' });
+                // add class to container to apply horizontal styles
+                $('.gallery-container').removeClass('collage').addClass('horizontal-seek');
+
+                // mousemove seek: map mouse X to scrollLeft
+                var $c = $('.gallery-container');
+                seekMouseHandler = function(e) {
+                    var rect = $c[0].getBoundingClientRect();
+                    var x = e.clientX - rect.left;
+                    var pct = Math.max(0, Math.min(1, x / rect.width));
+                    var maxScroll = $c[0].scrollWidth - rect.width;
+                    $c[0].scrollLeft = pct * maxScroll;
+                };
+                $c.on('mousemove.horizontalSeek', seekMouseHandler);
+            }
+
+            function disableSeekMode() {
+                if (!seekMode) return;
+                seekMode = false;
+                var $c = $('.gallery-container');
+                $c.off('mousemove.horizontalSeek');
+                $c.removeClass('horizontal-seek');
+                $c[0].scrollLeft = 0;
+                // re-init isotope to return to masonry layout
+                try { if (!$grid || !$grid.data('isotope')) initIsotopeGrid(); }
+                catch(e) { initIsotopeGrid(); }
+                startDynamics();
+            }
+
+            $('#btn-carousel').on('click', function(){ $('#btn-grid').removeClass('active'); $(this).addClass('active'); showCarousel(); });
+            $('#btn-coverflow').on('click', function(){ $('#btn-grid').removeClass('active'); $(this).addClass('active'); showCoverflow(); });
+            $('#btn-grid').on('click', function(){ $('#btn-carousel').removeClass('active'); $('#btn-coverflow').removeClass('active'); $('#btn-flow').removeClass('active'); $(this).addClass('active'); showGrid(); });
+            $('#btn-flow').on('click', function(){
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    $('#btn-grid').addClass('active');
+                    disableFlowMode();
+                } else {
+                    // turn off other views
+                    $('#btn-grid').removeClass('active'); $('#btn-carousel').removeClass('active'); $('#btn-coverflow').removeClass('active'); $('#btn-seek').removeClass('active');
+                    $(this).addClass('active');
+                    enableFlowMode();
+                }
+            });
+
+            $('#btn-seek').on('click', function(){
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    $('#btn-grid').addClass('active');
+                    disableSeekMode();
+                } else {
+                    $('#btn-grid').removeClass('active'); $('#btn-carousel').removeClass('active');
+                    $(this).addClass('active');
+                    enableSeekMode();
+                }
+            });
+
+            // 5. Continuous shuffle + dynamic quote cloning
+            // Configuration: 60s interval, limited visible quotes
+            var shuffleInterval = 60000; // ms between automatic shuffles (60s)
+            var quoteSpawnInterval = 60000; // ms between spawning/replacing quote clones (60s)
+            var quoteTTL = 60000; // ms before a spawned quote is removed (match spawn interval)
+            var maxVisibleQuotes = 5; // total quote-cards visible at any time (existing + clones)
+
+            // Capture existing quote-card templates (HTML of the .quote-card elements)
+            var quoteTemplates = [];
+            $('.quote-card').each(function() { quoteTemplates.push($(this).prop('outerHTML')); });
+
+            var clones = [];
+
+            function spawnQuoteClone() {
+                if (!quoteTemplates.length) return;
+
+                // Count existing (non-clone) quote-cards already present in the DOM
+                var existingCount = $('.gallery-item').not('.quote-clone').find('.quote-card').length;
+                var allowedClones = Math.max(0, maxVisibleQuotes - existingCount);
+
+                // If no clones are allowed but there are clones present, rotate by replacing the oldest clone
+                if (allowedClones === 0) {
+                    if (clones.length === 0) return; // nothing to replace
+                    var $old = clones.shift();
+                    try { if ($grid && $grid.data('isotope')) { $grid.isotope('remove', $old).isotope('layout'); } else { $old.remove(); } } catch(e) { try { $old.remove(); } catch(ignore){} }
+                } else {
+                    // If clones already at allowed capacity, remove oldest to make room
+                    if (clones.length >= allowedClones) {
+                        var $old2 = clones.shift();
+                        try { if ($grid && $grid.data('isotope')) { $grid.isotope('remove', $old2).isotope('layout'); } else { $old2.remove(); } } catch(e) { try { $old2.remove(); } catch(ignore){} }
+                    }
+                }
+
+                var tpl = quoteTemplates[Math.floor(Math.random() * quoteTemplates.length)];
+                var $item = $("<div class='gallery-item quote-clone'></div>").append(tpl);
+                // append to DOM and tell isotope about it (if available)
+                $('.gallery-container').append($item);
+                try {
+                    if ($grid && $grid.data('isotope')) { $grid.isotope('appended', $item); $grid.isotope('layout'); }
+                } catch(e) {}
+                clones.push($item);
+
+                // schedule removal so quotes reappear later (recycling)
+                setTimeout(function() {
+                    var idx = clones.indexOf($item);
+                    if (idx > -1) clones.splice(idx, 1);
+                    try { if ($grid && $grid.data('isotope')) { $grid.isotope('remove', $item).isotope('layout'); } else { $item.remove(); } } catch(e) { try { $item.remove(); } catch(ignore){} }
+                }, quoteTTL);
+            }
+
+            // Start spawning quotes continuously
+            var quoteSpawner = null;
+            var shuffler = null;
+
+            function startDynamics() {
+                if (!quoteSpawner) quoteSpawner = setInterval(spawnQuoteClone, quoteSpawnInterval);
+                if (!shuffler) shuffler = setInterval(function() { try { shuffleItems(); } catch (e) { try { $grid.isotope('shuffle'); } catch(_){} } }, shuffleInterval);
+            }
+
+            function stopDynamics() {
+                if (quoteSpawner) { clearInterval(quoteSpawner); quoteSpawner = null; }
+                if (shuffler) { clearInterval(shuffler); shuffler = null; }
+            }
+
+            // start dynamics by default
+            startDynamics();
+            // Auto-shuffle grid handled by startDynamics()
+            
+            } catch (e) {
+                console.error('Gallery init error:', e);
+                try { alert('Gallery init error: ' + (e && e.message)); } catch(ignore) {}
+            }
         });
     </script>
 
 </body>
+    <script src="main.js"></script>
 </html>

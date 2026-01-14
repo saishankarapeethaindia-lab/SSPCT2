@@ -104,6 +104,23 @@
       border: 0
     }
 
+    /* Site logo sizing and header alignment */
+    .site-logo {
+      max-height: 72px;
+      height: auto;
+      display: block;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+
+    @media (max-width: 768px) {
+      .site-logo { max-height: 48px; }
+    }
+
     svg:not(:root) {
       overflow: hidden
     }
@@ -28053,3 +28070,24 @@ Table of contents
           transform: translateX(-100%);
         }
       }
+   
+      .item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+.gold-text {
+  background: linear-gradient(135deg, #d4af37 0%, #f4e4a6 50%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+}
