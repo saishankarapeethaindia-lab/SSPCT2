@@ -14,154 +14,243 @@
                         spiritual: {
                             gold: '#D4AF37',
                             saffron: '#FF9933',
-                            maroon: '#800000',
-                            dark: '#1C1A17'
+                            maroon: '#6B1D1D',
+                            dark: '#13110F',
+                            surface: '#FDFBF7'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 10px #D4AF37, 0 0 20px #D4AF37' },
+                            'to': { boxShadow: '0 0 20px #FF9933, 0 0 30px #FF9933' },
                         }
                     }
                 }
             }
         }
     </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .glass-dark {
+            background: rgba(19, 17, 15, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+    </style>
 </head>
-<body class="bg-stone-50 text-stone-800 font-sans leading-relaxed">
+<body class="bg-[#F6F3ED] text-stone-800 font-sans leading-relaxed antialiased selection:bg-spiritual-gold selection:text-stone-900">
 
-    <div class="bg-spiritual-dark text-stone-300 text-xs py-2 px-4 border-b border-stone-800">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-            <div>
-                <span class="font-semibold text-spiritual-gold"><i class="fa-solid fa-building-shield mr-1"></i> Governing Law:</span> Charitable and Religious Trusts Act, 1920 (Reg No: BK-4-89-2024-25 | Dt: 20-08-2024)
+    <!-- Top Regulatory Compliance Bar (Updated with Original Docs) -->
+    <div class="bg-spiritual-dark text-stone-300 text-[10px] md:text-xs py-2 px-4 border-b border-stone-800 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
+            <div class="flex flex-wrap justify-center md:justify-start items-center gap-x-3 gap-y-1">
+                <span class="flex items-center gap-1.5"><span class="inline-flex w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> <strong class="text-spiritual-gold">Reg No:</strong> BK-4-89-2024-25</span>
+                <span class="hidden md:inline text-stone-600">|</span>
+                <span><strong class="text-spiritual-gold">Date:</strong> 20-08-2024</span>
+                <span class="hidden md:inline text-stone-600">|</span>
+                <span><strong class="text-spiritual-gold">PAN:</strong> ABJTS8880J</span>
             </div>
-            <div class="flex gap-4">
-                <span><strong class="text-spiritual-gold">NGO Darpan ID:</strong> KA/2026/0957371</span>
-                <span class="hidden md:inline">|</span>
-                <span><strong class="text-spiritual-gold">Jurisdiction:</strong> Bengaluru, India</span>
+            <div class="flex flex-wrap justify-center items-center gap-3">
+                <span><strong class="text-spiritual-gold">NGO Darpan:</strong> KA/2026/0957371</span>
+                <span class="hidden md:inline text-stone-600">|</span>
+                <span><strong class="text-spiritual-gold">12A/80G URN:</strong> ABJTS8880JE20251 / ABJTS8880JF20251</span>
             </div>
         </div>
     </div>
 
-    <header class="relative bg-gradient-to-br from-spiritual-maroon via-stone-900 to-spiritual-dark text-white py-16 px-6 text-center shadow-xl">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ff9933_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="relative max-w-4xl mx-auto">
-            
-            <div class="w-24 h-24 bg-stone-900/80 border-2 border-spiritual-gold rounded-full mx-auto flex items-center justify-center mb-4 shadow-lg overflow-hidden">
-                <i class="fa-solid fa-om text-spiritual-gold text-4xl"></i>
+    <!-- Hero Banner with Stunning Graphics -->
+    <header class="relative bg-gradient-to-br from-[#2A0808] via-spiritual-maroon to-spiritual-dark text-white py-24 px-6 text-center shadow-2xl overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#FF9933_1.5px,transparent_1.5px)] [background-size:30px_30px]"></div>
+        <div class="absolute -left-32 -top-32 w-96 h-96 bg-spiritual-saffron/20 rounded-full blur-[100px] animate-pulse"></div>
+        <div class="absolute -right-32 -bottom-32 w-96 h-96 bg-spiritual-gold/20 rounded-full blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
+        
+        <div class="relative max-w-5xl mx-auto z-10">
+            <div class="w-28 h-28 bg-black/40 backdrop-blur-md border-2 border-spiritual-gold rounded-full mx-auto flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(212,175,55,0.3)] animate-float">
+                <i class="fa-solid fa-om text-spiritual-gold text-5xl drop-shadow-lg"></i>
             </div>
-
-            <span class="text-spiritual-gold font-bold tracking-widest text-xs uppercase block mb-2">Official Institutional Portal</span>
-            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-stone-100 mb-3">
-                Sai Shankara Peetha Charitable Trust
+            
+            <span class="text-spiritual-gold font-bold tracking-widest text-[10px] md:text-xs uppercase block mb-4 bg-white/10 w-fit mx-auto px-5 py-1.5 rounded-full border border-white/20 backdrop-blur-sm">
+                Official Statutory & Audit Portal
+            </span>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-5 drop-shadow-2xl">
+                Sai Shankara Peetha <br class="hidden md:inline"><span class="text-transparent bg-clip-text bg-gradient-to-r from-spiritual-saffron via-amber-300 to-spiritual-gold">Charitable Trust</span>
             </h1>
-            <p class="text-stone-300 text-base md:text-lg max-w-2xl mx-auto font-light">
-                A collective spiritual and humanitarian framework rooted in the core teachings of Shirdi Sai Baba.
+            
+            <p class="text-stone-300 text-base md:text-xl max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md">
+                A registered public charitable trust rooted in the core teachings of Shirdi Sai Baba, dedicated to spiritual illumination, continuous annadaanam, and comprehensive humanitarian welfare.
             </p>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 py-12">
+    <!-- Main Content Area -->
+    <main class="max-w-6xl mx-auto px-4 md:px-6 py-16 -mt-10 relative z-20">
         
-        <section class="bg-white rounded-2xl shadow-lg border border-stone-200 overflow-hidden mb-12">
-            <div class="bg-gradient-to-r from-spiritual-saffron to-amber-500 p-6 text-white flex flex-col md:flex-row justify-between items-center gap-4">
-                <div>
-                    <span class="bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Primary Welfare Operation</span>
-                    <h2 class="text-2xl font-bold mt-2">Shirdi Sai Deepa Mandiram</h2>
-                    <p class="text-stone-100 text-sm mt-1">Proposed Kerala-Style Spiritual Complex & Pilgrim Support Center</p>
+        <!-- Statutory Clearances Card (For Google/Microsoft Auditors) -->
+        <section class="glass rounded-2xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center justify-between gap-6 transform hover:-translate-y-1 transition-all duration-300">
+            <div class="flex items-start gap-4">
+                <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl shrink-0">
+                    <i class="fa-solid fa-file-shield"></i>
                 </div>
-                <div class="bg-white/10 px-4 py-2 rounded-lg border border-white/20 text-center min-w-[140px]">
-                    <span class="text-[10px] uppercase block text-stone-200">Execution Phase</span>
-                    <span class="font-bold text-base text-spiritual-gold text-white">1-Year Roadmap</span>
+                <div>
+                    <h2 class="text-lg font-bold text-stone-900">Verified Statutory Entity</h2>
+                    <p class="text-sm text-stone-600 mt-1">Incorporated under the Charitable and Religious Trusts Act, 1920. Recognized by the Income Tax Department (Active PAN & URN Status) and NITI Aayog NGO Darpan.</p>
+                </div>
+            </div>
+            <div class="shrink-0 flex gap-3">
+                <span class="px-4 py-2 bg-stone-900 text-spiritual-gold rounded-lg text-xs font-bold tracking-wider border border-stone-700 shadow-md"><i class="fa-solid fa-check text-emerald-400 mr-1"></i> FCRA / CSR READY</span>
+            </div>
+        </section>
+
+        <!-- Primary Welfare Project Block -->
+        <section class="glass rounded-3xl overflow-hidden mb-16 transform hover:shadow-2xl transition-all duration-500">
+            <div class="bg-gradient-to-r from-spiritual-maroon to-stone-900 p-8 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b-2 border-spiritual-gold">
+                <div>
+                    <span class="bg-spiritual-saffron/20 text-spiritual-saffron text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-sm border border-spiritual-saffron/30">Primary Welfare Operation</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">Shirdi Sai Deepa Mandiram</h2>
+                    <p class="text-stone-300 text-sm mt-2 flex items-center gap-2"><i class="fa-solid fa-location-dot text-spiritual-saffron"></i> Proposed Kerala-Style Spiritual Complex & Pilgrim Support Center</p>
+                </div>
+                <div class="glass-dark px-6 py-4 rounded-2xl text-center min-w-[160px] shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <span class="text-[10px] uppercase block tracking-wider text-stone-400 mb-1">Execution Phase</span>
+                    <span class="font-black text-xl text-spiritual-gold animate-pulse">1-Year Roadmap</span>
                 </div>
             </div>
 
-            <div class="p-6 md:p-8">
-                <h3 class="text-lg font-bold text-stone-800 mb-2">Integrating Sacred Illumination & Public Service</h3>
-                <p class="text-stone-600 mb-6 text-sm md:text-base">
-                    Situated on a premier 40-cent property directly opposite the Mookambika Bus Stand in Kollur, the proposed Mandiram incorporates the traditional <em>Kerala Mathruka</em> architectural style. The centerpiece of the complex is its philosophy of <strong>Jyotir Aaradhana</strong>—continuous illumination powered by an Akhanda Jyoti and a brass Chuttuvilakku network, acting as a living symbol of the elimination of hunger, illness, and social neglect.
+            <div class="p-8 md:p-12 bg-white/50">
+                <h3 class="text-2xl font-bold text-stone-900 mb-4">Integrating Sacred Illumination & Public Service</h3>
+                <p class="text-stone-700 mb-10 text-base md:text-lg leading-relaxed">
+                    Situated on a premier 40-cent property directly opposite the Mookambika Bus Stand in Kollur, the proposed Mandiram incorporates the traditional <em class="text-spiritual-maroon font-serif font-semibold">Kerala Mathruka</em> architectural style. The centerpiece of the complex is its philosophy of <strong>Jyotir Aaradhana</strong>—continuous illumination powered by an Akhanda Jyoti and a brass Chuttuvilakku network, acting as a living symbol of the elimination of hunger, illness, and social neglect.
                 </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
-                    <div class="p-5 rounded-xl bg-orange-50/60 border border-orange-100">
-                        <div class="text-spiritual-saffron text-2xl mb-2"><i class="fa-solid fa-bowl-food"></i></div>
-                        <h4 class="font-bold text-stone-800 text-sm mb-1">Continuous Annadaanam</h4>
-                        <p class="text-xs text-stone-600">Non-commercial, daily free meal distribution networks dedicated to visiting pilgrims and economically vulnerable families.</p>
+                <!-- Core Pillars Infographic Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                    <div class="glass p-8 rounded-3xl hover:border-spiritual-saffron hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-50 text-spiritual-saffron flex items-center justify-center text-3xl mb-5 group-hover:bg-spiritual-saffron group-hover:text-white transition-all duration-500 shadow-md"><i class="fa-solid fa-bowl-food"></i></div>
+                        <h4 class="font-bold text-stone-900 text-lg mb-2">Continuous Annadaanam</h4>
+                        <p class="text-sm text-stone-600 leading-relaxed">Non-commercial, daily free meal distribution networks dedicated to visiting pilgrims and economically vulnerable families.</p>
                     </div>
-                    <div class="p-5 rounded-xl bg-amber-50/60 border border-amber-100">
-                        <div class="text-amber-600 text-2xl mb-2"><i class="fa-solid fa-kit-medical"></i></div>
-                        <h4 class="font-bold text-stone-800 text-sm mb-1">Emergency First Aid</h4>
-                        <p class="text-xs text-stone-600">Dedicated emergency first-response check points, resting rooms, and sanitation facilities to assist distressed travelers.</p>
+                    
+                    <div class="glass p-8 rounded-3xl hover:border-amber-500 hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-100 to-amber-50 text-amber-600 flex items-center justify-center text-3xl mb-5 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500 shadow-md"><i class="fa-solid fa-kit-medical"></i></div>
+                        <h4 class="font-bold text-stone-900 text-lg mb-2">Emergency First Aid</h4>
+                        <p class="text-sm text-stone-600 leading-relaxed">Dedicated emergency first-response check points, resting rooms, and sanitation facilities to assist distressed travelers.</p>
                     </div>
-                    <div class="p-5 rounded-xl bg-red-50/60 border border-red-100">
-                        <div class="text-spiritual-maroon text-2xl mb-2"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                        <h4 class="font-bold text-stone-800 text-sm mb-1">Humanitarian Outreach</h4>
-                        <p class="text-xs text-stone-600">Structured social welfare campaigns and local community support, subject to direct governance and statutory audit.</p>
+                    
+                    <div class="glass p-8 rounded-3xl hover:border-spiritual-maroon hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-100 to-red-50 text-spiritual-maroon flex items-center justify-center text-3xl mb-5 group-hover:bg-spiritual-maroon group-hover:text-white transition-all duration-500 shadow-md"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <h4 class="font-bold text-stone-900 text-lg mb-2">Humanitarian Outreach</h4>
+                        <p class="text-sm text-stone-600 leading-relaxed">Structured social welfare campaigns and local community support, subject to direct governance and statutory audit.</p>
                     </div>
-                </div>
-
-                <div class="bg-stone-50 rounded-xl p-5 border border-stone-200 text-xs md:text-sm text-stone-600">
-                    <span class="font-bold text-stone-800 block mb-1"><i class="fa-solid fa-scale-balanced mr-1"></i> Institutional Accountability Statement:</span>
-                    All financial allocations, land transfers, public contributions, and local welfare expenditures are maintained under strict internal accounting controls, in full compliance with the provisions of the 1920 Trust Act, and overseen by the Trust's designated Statutory Auditor, <strong>CA Amith M</strong>.
                 </div>
             </div>
         </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <div class="bg-white p-5 rounded-xl shadow border border-stone-200">
-                <h3 class="text-base font-bold text-spiritual-maroon border-b pb-2 mb-3 uppercase tracking-wider text-xs"><i class="fa-solid fa-users-gear mr-1"></i> Administrative Council</h3>
-                <ul class="space-y-2 text-xs md:text-sm">
-                    <li class="flex justify-between items-center py-1 border-b border-stone-100 last:border-0">
-                        <span class="font-medium text-stone-700">President & Spiritual Custodian</span>
-                        <span class="text-stone-600 text-right">Sri Sai Prasad Manikoth</span>
-                    </li>
-                    <li class="flex justify-between items-center py-1 border-b border-stone-100 last:border-0">
-                        <span class="font-medium text-stone-700">Trustee</span>
-                        <span class="text-stone-600 text-right">Mrs. Neethu Sai Prasad</span>
-                    </li>
-                    <li class="flex justify-between items-center py-1 border-b border-stone-100 last:border-0">
-                        <span class="font-medium text-stone-700">Statutory Auditor</span>
-                        <span class="text-stone-600 text-right font-mono">CA Amith M</span>
-                    </li>
-                </ul>
+        <!-- Administrative & Heritage Grid (Updated with Original Docs) -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            <div class="glass p-8 rounded-3xl hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 text-stone-100 text-9xl opacity-50 pointer-events-none"><i class="fa-solid fa-sitemap"></i></div>
+                <div class="relative z-10">
+                    <h3 class="text-sm font-bold text-spiritual-maroon border-b-2 border-stone-200 pb-3 mb-6 uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-users-gear"></i> Board of Trustees</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex justify-between items-center py-2 border-b border-stone-200/60">
+                            <div>
+                                <span class="font-bold text-stone-900 block text-base">Sri Sai Prasad Manikoth</span>
+                                <span class="text-stone-500 text-xs">President & Managing Trustee</span>
+                            </div>
+                            <span class="bg-stone-100 px-3 py-1 rounded text-[10px] font-bold text-stone-500 border border-stone-200">KYC VERIFIED</span>
+                        </li>
+                        <li class="flex justify-between items-center py-2 border-b border-stone-200/60">
+                            <div>
+                                <span class="font-bold text-stone-900 block text-base">Mrs. Neethu Sai Prasad</span>
+                                <span class="text-stone-500 text-xs">Trustee</span>
+                            </div>
+                            <span class="bg-stone-100 px-3 py-1 rounded text-[10px] font-bold text-stone-500 border border-stone-200">KYC VERIFIED</span>
+                        </li>
+                        <li class="flex justify-between items-center py-2 pt-4">
+                            <span class="font-semibold text-stone-600">Statutory Auditor</span>
+                            <span class="text-spiritual-maroon font-mono font-bold bg-red-50 px-3 py-1 rounded border border-red-200 text-right shadow-sm">CA Amith M</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="bg-white p-5 rounded-xl shadow border border-stone-200">
-                <h3 class="text-base font-bold text-spiritual-maroon border-b pb-2 mb-3 uppercase tracking-wider text-xs"><i class="fa-solid fa-clock-rotate-left mr-1"></i> Sai Heritage Preservation</h3>
-                <p class="text-xs text-stone-600 leading-relaxed">
-                    The management maintains deep structural and historical ties to the preservation of Sai spiritual history. This includes the documentation framework of the internationally distributed <strong>SSSGE Calendar – Year 85</strong> project (ceremonially launched in June 2010 alongside Sri J. Ratnakara Rajugaru and Sri Master Kamalgaru), subsequent format approval, and presentations during the <em>Sri Sathya Sai Aradhana Mahotsavam</em>.
-                </p>
-            </div>
-        </section>
-
-        <section class="bg-stone-900 text-stone-200 rounded-2xl p-6 md:p-8 border border-stone-800">
-            <div class="max-w-2xl mx-auto text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
-                <div>
-                    <h3 class="text-lg font-bold text-spiritual-gold mb-1"><i class="fa-solid fa-network-wired mr-1"></i> Enterprise Tenant Setup Pending</h3>
-                    <p class="text-stone-400 text-xs leading-relaxed">
-                        Our administrative systems are currently provisioning our enterprise cloud directory via Microsoft 365 for Nonprofits and integrating automated receipt workflows. During this verification window, all statutory communications remain hosted via our primary administrative channels.
+            <div class="glass p-8 rounded-3xl hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 text-stone-100 text-9xl opacity-50 pointer-events-none"><i class="fa-solid fa-book-open"></i></div>
+                <div class="relative z-10">
+                    <h3 class="text-sm font-bold text-spiritual-maroon border-b-2 border-stone-200 pb-3 mb-5 uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-clock-rotate-left"></i> Sai Heritage Preservation</h3>
+                    <p class="text-sm text-stone-700 leading-relaxed font-medium mb-4">
+                        The management maintains deep structural and historical ties to the preservation of Sai spiritual history. 
+                    </p>
+                    <p class="text-sm text-stone-600 leading-relaxed">
+                        This includes the documentation framework of the internationally distributed <strong>SSSGE Calendar – Year 85</strong> project (ceremonially launched in June 2010 alongside Sri J. Ratnakara Rajugaru and Sri Master Kamalgaru), subsequent format approval, and presentations during the <em>Sri Sathya Sai Aradhana Mahotsavam</em>.
                     </p>
                 </div>
             </div>
+        </section>
 
-            <div class="mt-6 pt-6 border-t border-stone-800 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-stone-400">
-                <div>
-                    <span class="text-stone-500 block font-bold uppercase tracking-widest text-[9px] mb-1">Administrative Mail</span>
-                    <a href="mailto:saisankarapeetha@gmail.com" class="hover:underline text-stone-300 flex items-center gap-1"><i class="fa-solid fa-envelope text-spiritual-gold"></i> saisankarapeetha@gmail.com</a>
-                </div>
-                <div>
-                    <span class="text-stone-500 block font-bold uppercase tracking-widest text-[9px] mb-1">Central Help Desk</span>
-                    <p class="text-stone-300 flex items-center gap-1"><i class="fa-solid fa-phone text-spiritual-gold"></i> +91 70223 51259</p>
-                </div>
-                <div>
-                    <span class="text-stone-500 block font-bold uppercase tracking-widest text-[9px] mb-1">Registered Headquarters</span>
-                    <p class="text-stone-300 leading-tight"><i class="fa-solid fa-location-dot text-spiritual-gold"></i> #281, Hari Om, RT Nagar 1st Block, Bengaluru, KA - 560032</p>
+        <!-- Audit Communication Container (Updated with Official Docs Address/Phone) -->
+        <section class="glass-dark text-stone-200 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden transform hover:scale-[1.01] transition-transform duration-500">
+            <div class="absolute right-0 bottom-0 w-96 h-96 bg-spiritual-gold/10 rounded-full blur-[80px] pointer-events-none"></div>
+            
+            <div class="max-w-4xl relative z-10">
+                <h3 class="text-2xl font-bold text-spiritual-gold mb-3 flex items-center gap-3"><i class="fa-solid fa-shield-halved"></i> Corporate & Enterprise Integration Active</h3>
+                <p class="text-stone-400 text-sm leading-relaxed mb-8">
+                    Our administrative systems are actively deploying corporate non-profit workspace directories and onboarding secure financial ledger APIs. During this verification stage, all formal statutory communications, vendor inquiries, and audit validations are routed strictly through the verified endpoints below.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                    <div class="bg-black/40 p-5 rounded-2xl border border-stone-700/50 hover:border-spiritual-gold/50 transition-colors duration-300">
+                        <span class="text-stone-500 block font-bold uppercase tracking-widest text-[10px] mb-2"><i class="fa-solid fa-envelope mr-1"></i> Official Mail</span>
+                        <a href="mailto:saishankarapeetha.india@gmail.com" class="hover:text-spiritual-gold transition-colors text-stone-200 font-medium break-all block mb-1">saishankarapeetha.india@gmail.com</a>
+                        <a href="mailto:saisankarapeetha@gmail.com" class="hover:text-spiritual-gold transition-colors text-stone-400 text-xs break-all block">saisankarapeetha@gmail.com</a>
+                    </div>
+                    
+                    <div class="bg-black/40 p-5 rounded-2xl border border-stone-700/50 hover:border-spiritual-gold/50 transition-colors duration-300">
+                        <span class="text-stone-500 block font-bold uppercase tracking-widest text-[10px] mb-2"><i class="fa-solid fa-phone mr-1"></i> Central Help Desk</span>
+                        <p class="text-stone-200 font-medium text-lg">+91 70223 51259</p>
+                    </div>
+                    
+                    <div class="bg-black/40 p-5 rounded-2xl border border-stone-700/50 hover:border-spiritual-gold/50 transition-colors duration-300">
+                        <span class="text-stone-500 block font-bold uppercase tracking-widest text-[10px] mb-2"><i class="fa-solid fa-location-dot mr-1"></i> Registered Headquarters</span>
+                        <p class="text-stone-300 font-medium leading-relaxed text-xs">
+                            No 281, 2nd Floor, Hari Om, 8th Cross, RT Nagar 1st Block, Bengaluru North, Karnataka - 560032
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-stone-950 text-stone-600 py-6 text-center text-[10px] md:text-xs border-t border-stone-900">
-        <p class="font-medium">© 2026 Sai Shankara Peetha Charitable Trust. All Institutional Content Reserved.</p>
-        <p class="mt-1 text-stone-700">This platform serves exclusively for statutory identity, programmatic disclosures, and cloud license compliance auditing under the Indian Penal Code, IT Act 2000, and associated NGO regulations.</p>
+    <!-- Professional Audit Footer -->
+    <footer class="bg-[#0A0908] text-stone-500 py-10 px-6 text-center text-xs border-t border-stone-800">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <div class="flex justify-center items-center gap-4 text-stone-600 mb-2">
+                <i class="fa-solid fa-scale-balanced text-xl"></i>
+                <i class="fa-solid fa-file-contract text-xl"></i>
+                <i class="fa-solid fa-building-columns text-xl"></i>
+            </div>
+            <p class="font-bold text-stone-400 text-sm tracking-wide">© 2026 Sai Shankara Peetha Charitable Trust. All Institutional Content Reserved.</p>
+            <p class="leading-relaxed text-stone-600 max-w-3xl mx-auto">
+                This platform serves exclusively for statutory identity verification, regulatory programmatic disclosures, and global cloud suite compliance auditing under the Indian Penal Code, IT Act 2000, and associated non-profit governance regulations. Unauthorized reproduction or commercial use of Trust branding is strictly prohibited.
+            </p>
+        </div>
     </footer>
 
 </body>
 </html>
-
